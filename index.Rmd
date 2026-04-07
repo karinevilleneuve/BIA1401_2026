@@ -11,19 +11,19 @@ github-repo: rstudio/bookdown-demo
 
 # Introduction
 
-##  Introduction
+##  Aperçu du cours
 
-Ce petit guide à été rédigé à l'intention des élèves du cours BIA104 afin de familiariser les étudiantes et étudiants à l'utilisation du langage de programmation R à travers l'IDE R Studio pour manipuler des tableaux de données 
+Ce guide a été rédigé à l’intention des étudiantes et étudiants du cours BIA104 afin de les familiariser avec l’utilisation du langage de programmation R et de l’IDE RStudio pour la manipulation de tableaux de données.
 
-1. La première section [Introduction à R et RStudio] présente brièvement R et R Studio. 
+1. La première section [Introduction à R et RStudio] présente brièvement R et RStudio. 
 
-2. La seconde section [Utiliser RStudio et R Mardown] introduit quelques notions de bases en R et explique comment élaborer des scripts avec RStudio en format R ou R Markdown. 
+2. La seconde section [Utiliser RStudio et R Markdown] introduit quelques notions de base en R et explique comment élaborer des scripts avec RStudio en format R ou R Markdown. 
 
-3. La troisième section [Script pour BLAST] comprend un script R que les étudiants doivent utiliser afin d'obtenir pour chacun de leurs inconnus la séquence d'acide nucléiques correspondant au gène ARNr 16S. Les étudiants pourront ensuite fournir les séquences à l'outil *Basic Local Alignment Search Tool* ([BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)) du National Center for Biotechnology Information (NCBI) afin d'attribuer une classification taxonomique à chacun de leurs inconnus.
+3. La troisième section [Script pour BLAST] comprend un petit script R que les étudiants doivent utiliser afin d'obtenir, pour chacun de leurs inconnus, la séquence d'acides nucléiques correspondant au gène ARNr 16S. Les étudiants pourront ensuite soumettre ces séquences à l'outil *Basic Local Alignment Search Tool* ([BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)) du National Center for Biotechnology Information (NCBI) afin d'attribuer une classification taxonomique à chacun de leurs inconnus.
 
 ## Installer R et RStudio 
 
-R est disponible gratuitement pour les systèmes d'opération Windows, Mac et Linux sur le [site officiel des archives de R](https://cloud.r-project.org/). 
+R est disponible gratuitement pour les systèmes d'exploitation Windows, Mac et Linux sur le [site officiel des archives de R](https://cloud.r-project.org/). 
 
 Une fois R installé, vous pouvez procéder à l'installation de [RStudio](https://posit.co/download/rstudio-desktop/)
 

@@ -1,30 +1,77 @@
 # Script pour BLAST
 
-Pour trouver vos séquences commencer par télécharger le fichier `sequences_inconnus.csv` et l'enregistrer dans le dossier `Documents`. Si vous enregistrer le document dans un autre dossier il vous faudra changer de répertoire de travail avec la fonction `setwd()`. 
+## Filtrer les données 
+
+Maintenant que vous vous êtes familiarisés avec les différentes commandes R et l'interface de RStudio, vous êtes maintenant prêtes et prêts à utiliser R pour obtenir les séquences d'ADN de vos inconnus. Ces dernières ont été compilées dans un seul fichier en format CSV (`inconnus_equipe.csv`) pour l'ensemble des étudiants de la classe. Vous devez donc utiliser des filtres afin d'extraire uniquement vos données. La première étape consiste à importer le fichier `inconnus_equipe.csv` dans R avec la commande suivante :  
 
 ```{r, eval = FALSE}
-raw_df = read.csv("sequences_inconnus.csv", header = TRUE, sep = ",", check.name = FALSE)
+df_raw = read.csv("https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/inconnus_equipe.csv", header = TRUE)
 ```
 
-Vous devriez maintenant voir dans l'encadré `Environnement` l'objet `raw_df  31 obs. of 7 variable` sous le titre `Data` (coin supérieur droit). Basée sur ces informations vous pouvez déduire qu'il s'agit d'un tableau de données comportant 31 lignes et 7 colonnes.  
+La prochaine étape consiste à filtrer les colonnes appropriées du tableau de données afin d'extraire vos données.  Pour ce faire, n'hésitez pas à consulter les exemples de la section précédente ([Exploration de données]), rechercher sur internet, ou demander à vos démos. 
 
-Vous pouvez afficher le tableau de données en cliquant sur l'objet qui s'ouvre dans un nouvel onglet. 
+Pour afficher les solutions possibles, cliquer sur " ▶ Code " ci-dessous.
 
-Pour filtrer un tableau de données nous pouvons utiliser la fonction `subset()`. Pour ce faire, il faut indiquer le nom de la colonne dans laquelle nous voulons appliquer le filtre et quelles valeurs rechercher. Ici nous avons deux filtres de recherche (jour du labo et numéro d'équipe) et donc nous utilisons le symbole &. 
 
-**Avant d'exécuter cette ligne de code vous devez inscrire entre le guillements le jour de votre laboratoire (Mardi, Mercredi ou Jeudi, avec majuscule) et votre numéro d'équipe.**
+```{r, eval = FALSE, class.source="fold-hide"}
+# Option 1 - Utiliser la fonction native subset de R  
+df_sub = subset(df_raw, Laboratoire == "Jeudi" & Equipe_ID == "12")
+
+# Option 2 - Utiliser la librairie dplyr 
+library(dplyr)
+df_sub = df_raw %>%
+  filter(Laboratoire == "Jeudi" & 
+           Equipe_ID == "12")
+```
+
+
+Si tout fonctionne, vous devriez maintenant voir un second objet `df_sub` comportant 3 lignes et 7 colonnes.
+
+Nous allons maintenant enregistrer sous format fasta le tableau de données filtré afin de pouvoir le téléverser vers l'outil BLAST du NCBI. 
 
 ```{r, eval = FALSE}
-df = subset(raw_df, Laboratoire == "" & Equipe == "")
+
+install.packages("seqinr")
+library(seqinr)
+
+write.fasta(as.list(df_sub$Sequence), names = df_sub$Inconnu_ID, nbchar = 80, as.string = TRUE, file.out = "output.fasta")
 ```
 
-Si tout fonctionne, vous devriez maintenant voir un second objet `df` comportant 1 ligne et 7 colones.
+## Utiliser BLAST 
 
-Vous pouvez finalement enregistrer ce tableau correspondant uniquement à vos résultats en utilisant la fonction `write.csv()`. 
+1. Rendez-vous sur l'outil en ligne [BLAST du NCBI](https://blast.ncbi.nlm.nih.gov/Blast.cgi)  
+2. Choisir l'analyse `Nucleotide BLAST` (`BLASTn`) 
+3. Sélectionner `Choose file` et sélectionner le fichier produit (`output.fasta`)
+4. Modifier **les paramètres de la recherche BLAST**
 
-```{r, eval = FALSE}
-write.csv(df, file = "mes_inconnus.csv", quote = FALSE, row.names = FALSE)
+    - a. Utiliser la collection de nucléotides (Database rRNA/ITS database)
+    - b. Exclure les organismes environnementaux et non cultivés(Exclude Uncultured/environmental sample sequences)
+    - c. Choisir l'algorithme de BLAST désiré (essayer à la fois les algorithmes` BLASTn` et` MegaBLAST`
+  
+5. Lancer l'analyse (bouton `BLAST`). 
+
+```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
+knitr::include_graphics("data/BLAST.png")
 ```
 
-Vous pouvez ensuite ouvrir ce fichier avec Excel afin d'obtenir la séquence d'ADN de chacun de vos inconnus à utiliser pour la recherche avec BLAST. 
+Exemple de résultat : 
+
+Pour voir les résultats de vos autres inconnus utiliser le menu déroulant sous l'encadré **Results for**
+
+```{r echo=FALSE, out.width = "70%", fig.align = "center", out.lenght = "100%"}
+knitr::include_graphics("data/BLAST_results.png")
+```
+
+6. Pour votre rapport, vous devez inclure un imprime-écran incluant les trois premiers résultats de l’analyse (trois premiers taxons identifiés) pour chacun de vos inconnus. Vous devez inclure cette image dans l’annexe de votre travail et pour le corps du texte produire un tableau comprenant les colonnes suivantes : 
+  - Per. Ident. 
+      - La proportion de nucléotides identiques entre votre séquence et la séquence trouvée dans la base de données, dans la région alignée
+  - Query cover
+      - Le pourcentage de votre séquence inconnue qui a été aligné avec la séquence de la base de données
+  - E.value
+      - Estime le nombre de résultats similaires que l’on pourrait obtenir par hasard
+  
+Vous pouvez aussi consulter pour votre plaisir personnel : 
+
+- L’arbre phylogénétique (Distance tree of results) 
+- Les résultats de l'alignement (MSA viewer)
 

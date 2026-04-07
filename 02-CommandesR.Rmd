@@ -1,4 +1,4 @@
-# Utiliser RStudio et R Mardown
+# Utiliser RStudio et R Markdown
 
 ## Pourquoi utiliser R Markdown
 
@@ -6,18 +6,18 @@ Plusieurs préfèrent rédiger leurs scripts dans des fichiers de type R Markdow
 
 - Ce type de fichier permet de facilement annoter son script entre les sections de codes qui sont comprises dans un bloc ("chunk" en anglais).
 
-  - Un script bien annoter permet non seulement au scripteur de s'y retrouver facilement mais aussi de partager son code à ses collègues ou même publiquement. 
+  - Un script bien annoté permet non seulement au scripteur de s'y retrouver facilement mais aussi de partager son code à ses collègues ou même publiquement. 
   
   - En effet, il est de plus en plus commun de retrouver dans les articles scientifiques un lien vers les scripts générés et utilisés par les auteurs de l'article afin d'analyser leurs données. 
 
-- Mais aussi, les blocs de codes permettent d'exécuter seulement certaines sections de code à la fois, ce qui ultimement permet de modifier puis exécuter seulement ces sections de code sans avoir à re-exécuter l'entièreté du script. 
+- Mais aussi, les blocs de codes permettent d'exécuter seulement certaines sections de code à la fois, ce qui ultimement permet de modifier puis exécuter seulement ces sections de code sans avoir à re-exécuter l'ensemble du script. 
 
-## Utliser R Markdowm
+## Utiliser R Markdown
 
 La première étape consiste donc à créer un nouveau document de type R Mardown. Pour cela, ouvrez RStudio, puis cliquez sur `Fichier`. Dans le menu déroulant sélectionner `Nouveau Fichier` puis `R Markdown...`. 
 
 Dans la nouvelle fenêtre vous pouvez donner le titre que vous voulez à votre nouveau document. 
-Par défault le nouveau document affiche une petite introduction ainsi que des exemples tel que sur l'image ci-dessous : 
+Par défaut le nouveau document affiche une petite introduction ainsi que des exemples, tel que sur l'image ci-dessous : 
 
 ```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
 knitr::include_graphics("data/rmarkdown.png")
@@ -47,7 +47,7 @@ Un bloc de code peut être inséré avec l'une des façons suivantes :
 
 Un fois votre code rédigé dans le bloc, vous pouvez exécuter l'entièreté du code contenu dans ce block en appuyant sur le bouton vert en haut à droite du code (<font color='green'> ▶ </font>). 
 
-Il est possible d'insérer des blocs de code de différents langages de programmation tels que Bash et Python, il suffit de remplacer le `r` entre les accolades par le nom du programme utilisé. 
+Il est également possible d’insérer des blocs de code dans d’autres langages, comme Bash ou Python, il suffit de remplacer le `r` entre les accolades par le nom du programme utilisé. 
 
 Plusieurs autres options peuvent être appliqués sur les blocs, pour plus d'informations je vous recommande de consulter la documentation disponible sur internet. 
 
@@ -55,7 +55,7 @@ Plusieurs autres options peuvent être appliqués sur les blocs, pour plus d'inf
 
 ### Définir le répertoire de travail par défaut 
 
-Généralement, avant de commencer à analyser des données, il faut indiquer à R où se trouve les données sur notre ordinateur. Il existe plusieurs manières de procéder, dont notamment, spécifier au début du script un répertoire/dossier de travail par défaut. Pour ce faire, une suffit d'utiliser la commande `setwd()` comme présenté sur l'exemple ci-dessous. Le texte entre les guillemets de l'exemple doit simplement être modifié pour le vrai chemin vers votre répertoire/dossier de travail. Une fois le répertoire de travail définit par défaut de la sorte il n'est pas nécessaire d'inclure le chemin vers les fichiers que l'on veut importer tant qu'il se trouve dans le répertoire spécifié. Cela s'applique aussi à la sauvegarde de tableaux, figures ou autres. 
+Généralement, avant de commencer à analyser des données, il faut indiquer à R où se trouve les données sur notre ordinateur. Il existe plusieurs manières de procéder, dont notamment, spécifier au début du script un répertoire/dossier de travail par défaut. Pour ce faire, une suffit d'utiliser la commande `setwd()` comme présenté sur l'exemple ci-dessous. Le texte entre les guillemets de l'exemple doit simplement être modifié pour le vrai chemin vers votre répertoire/dossier de travail. Une fois le répertoire de travail défini par défaut de la sorte il n'est pas nécessaire d'inclure le chemin vers les fichiers que l'on veut importer tant qu'il se trouve dans le répertoire spécifié. Cela s'applique aussi à la sauvegarde de tableaux, figures ou autres. 
 
 ````{verbatim, lang = "python"}
 ```{r} 
@@ -73,14 +73,17 @@ Pour importer un fichier en format *comma seperated value* (csv) dans R on utili
 - `header` : Indiquer si la première ligne de notre tableau correspond au nom des colonnes (valeurs possible TRUE/FALSE)
 - `row.names` : Indiquer quelle colonne de notre tableau correspond au nom des rangés 
 - `sep` : Indiquer quel caractère doit servir de séparateur pour les colonnes 
-- `check.name` : Ne pas systématiquement remplacer le trait d'union par un point (valeurs possible TRUE/FALSE)
+- `check.names` : Ne pas systématiquement remplacer le trait d'union par un point (valeurs possible TRUE/FALSE)
 
 ````{verbatim, lang = "python"}
  ```{r}
 df = read.csv(file = "nom_fichier.csv", header = TRUE, row.names = 1, sep = ",", check.names = FALSE)  
 ```
 ```` 
+
 Pour un tableau en format *tab delimited* (souvent avec l'extension .tsv) on peut utiliser la fonction `read.table` et spécifier `\t` comme séparateur. 
+
+Lorsqu'un objet est importé ou créé dans R, celui-ci s'affiche dans la section **Environment** de RStudio (coin supérieur droit). L'objet affiche son nom mais aussi certaines informations. Par exemple, la valeur de l'objet, le nombre de lignes et colonnes d'un tableau, le nombre d'objets dans une liste, etc. Les tableaux et matrices peuvent aussi être visualisés dans un nouvel onglet en cliquant sur l'objet. 
 
 ### Manipulation de variables et types de données
 
@@ -130,7 +133,7 @@ lst$Nobels_prizes  # Accéder à un élément de la liste
 
 **Matrices**
 
-Une matrice est un tableau diposé en *m* rangées et *n* colonnes qui contient des valeurs **d'un même type** (généralement numérique et optimisées pour les calculs mathématiques). 
+Une matrice est un tableau disposé en *m* rangées et *n* colonnes qui contient des valeurs **d'un même type** (généralement numérique et optimisées pour les calculs mathématiques). 
 
 ```{r, eval = FALSE}
 mat = matrix(1:9, nrow=3)  # Créer une matrice 3x3
@@ -139,7 +142,7 @@ print(mat)  # Afficher la matrice
 
 **Tableaux de données / data frames**
 
-Les tableaux de données peuvent être hétérogènes (contenir des valuers numérique, des dates, des caractères, etc.) et sont utiles pour le stockage de données. 
+Les tableaux de données peuvent être hétérogènes (contenir des valeurs numériques, des dates, des caractères, etc.) et sont utiles pour le stockage de données. 
 
 ```{r, eval = FALSE}
 df = data.frame(Name = c("Marie Curie", "Lise Meitner", "Barbara McClintock"), 
@@ -165,7 +168,7 @@ str(df_manchot)  # Obtenir la structure des données
 
 ```{r, eval = FALSE}
 df_manchot$Island  # Sélectionner la colonne Island 
-unique(df_manchot$Island) # Affiche les valeurs unique présentent dans la colonne Island 
+unique(df_manchot$Island) # Affiche les valeurs uniques présentent dans la colonne Island 
 # Garder uniquement les manchots de l'île Dream
 df_manchot_dream = subset(df_manchot, Island == "Dream") 
 # Garder uniquement les petits manchots 
@@ -187,13 +190,13 @@ df_info_educ = data.frame(Name = c("Marie Curie", "Lise Meitner", "Barbara McCli
                           Study = c("Physics - Chemistry", "Nuclear physics", "Cytogenetics"), 
                           Institutions = c("University of Paris", "University of Vienna", "University of Missouri"))
 
-# Fusionner les deux tableaux sur la colonne "ID"
+# Fusionner les deux tableaux sur la colonne "Name"
 df_info_all = merge(df_info_gen, df_info_educ, by = "Name", all = TRUE)
 ```
 
 Explication :
 
-- `by = "ID"` : Spécifie que la fusion se fait sur la colonne `Name` présente dans les deux jeux de données.  
+- `by = "Name"` : Spécifie que la fusion se fait sur la colonne `Name` présente dans les deux jeux de données.  
 - `all = TRUE` : Effectue une jointure externe (`outer join`), conservant toutes les lignes des deux data frames, même si elles ne correspondent pas parfaitement. Si `all = FALSE` (par défaut), seuls les ID présents dans les deux tables sont conservés (`inner join`). `all.x = TRUE` conserverait toutes les lignes de `df_info_gen`, et `all.y = TRUE` celles de `df_info_educ`(jointure gauche/droite).  
   
 **Visualiser les données avec ggplot2 (générer des figures)** 
@@ -226,7 +229,7 @@ knitr::include_graphics("data/tpenguin_plot.svg")
 
 **Exporter des données**
 
-Les tableaux de données ou matrices peuvent être exporter sous différents formats (csv, tsv, tab, etc.) en utilisant des commandes comme `write.csv` ou `write.table`. Pour exporter des figures, on peut utiliser la fonction `ggsave` et spécifier l'extension (PDF, PNG, SVG, etc.). 
+Les tableaux de données ou matrices peuvent être exportés sous différents formats (csv, tsv, tab, etc.) en utilisant des commandes comme `write.csv` ou `write.table`. Pour exporter des figures, on peut utiliser la fonction `ggsave` et spécifier l'extension (PDF, PNG, SVG, etc.). 
 
 ```{r, eval = FALSE}
 # Exporte un tableau de données 
