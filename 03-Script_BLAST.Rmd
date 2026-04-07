@@ -1,0 +1,30 @@
+# Script pour BLAST
+
+Pour trouver vos séquences commencer par télécharger le fichier `sequences_inconnus.csv` et l'enregistrer dans le dossier `Documents`. Si vous enregistrer le document dans un autre dossier il vous faudra changer de répertoire de travail avec la fonction `setwd()`. 
+
+```{r, eval = FALSE}
+raw_df = read.csv("sequences_inconnus.csv", header = TRUE, sep = ",", check.name = FALSE)
+```
+
+Vous devriez maintenant voir dans l'encadré `Environnement` l'objet `raw_df  31 obs. of 7 variable` sous le titre `Data` (coin supérieur droit). Basée sur ces informations vous pouvez déduire qu'il s'agit d'un tableau de données comportant 31 lignes et 7 colonnes.  
+
+Vous pouvez afficher le tableau de données en cliquant sur l'objet qui s'ouvre dans un nouvel onglet. 
+
+Pour filtrer un tableau de données nous pouvons utiliser la fonction `subset()`. Pour ce faire, il faut indiquer le nom de la colonne dans laquelle nous voulons appliquer le filtre et quelles valeurs rechercher. Ici nous avons deux filtres de recherche (jour du labo et numéro d'équipe) et donc nous utilisons le symbole &. 
+
+**Avant d'exécuter cette ligne de code vous devez inscrire entre le guillements le jour de votre laboratoire (Mardi, Mercredi ou Jeudi, avec majuscule) et votre numéro d'équipe.**
+
+```{r, eval = FALSE}
+df = subset(raw_df, Laboratoire == "" & Equipe == "")
+```
+
+Si tout fonctionne, vous devriez maintenant voir un second objet `df` comportant 1 ligne et 7 colones.
+
+Vous pouvez finalement enregistrer ce tableau correspondant uniquement à vos résultats en utilisant la fonction `write.csv()`. 
+
+```{r, eval = FALSE}
+write.csv(df, file = "mes_inconnus.csv", quote = FALSE, row.names = FALSE)
+```
+
+Vous pouvez ensuite ouvrir ce fichier avec Excel afin d'obtenir la séquence d'ADN de chacun de vos inconnus à utiliser pour la recherche avec BLAST. 
+

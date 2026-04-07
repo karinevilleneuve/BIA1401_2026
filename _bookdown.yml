@@ -1,0 +1,6 @@
+book_filename: "BIO1410_2024"
+language:
+  ui:
+    chapter_name: "Chapitre "
+delete_merged_file: true
+output_dir: "docs"

@@ -1,0 +1,11 @@
+# Références et liens utiles 
+
+[An Introduction to R](https://intro2r.com/)
+
+[Introduction à R par GRICAD Grenoble Alpes Recherche - Infrastructure de Calcul Intensif et de Données](https://formations_r.gricad-pages.univ-grenoble-alpes.fr/ced_intror/)
+
+[Série d’ateliers R du CSBQ](https://r.qcbs.ca/fr/workshops/)
+
+[Data Science avec R](https://bookdown.org/fousseynoubah/dswr_book/objets-dans-r.html) 
+
+- Je recommande spécialement le **Chapitre 3 Objets dans R** et le **Chapitre 4 S’exprimer dans R**

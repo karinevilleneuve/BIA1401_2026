@@ -1,0 +1,10 @@
+introduction
+introduction-à-r-studio-et-r-markdown
+pourquoi-utiliser-r-markdown
+utliser-r-markdowm
+bloc-de-codes
+définir-le-répertoire-de-travail-par-défault
+importer-des-données
+blast
+traitement-des-fastqs
+statistiques

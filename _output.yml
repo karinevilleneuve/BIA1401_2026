@@ -1,0 +1,8 @@
+bookdown::gitbook:
+  css: style.css
+  code_folding: show
+  config:
+    toc:
+      before: |
+        <li><a href="./">BIA1401-2026</a></li>
+    edit: https://github.com/rstudio/bookdown-demo/edit/master/%s

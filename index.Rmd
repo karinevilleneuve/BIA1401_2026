@@ -1,0 +1,39 @@
+--- 
+title: "BIA1401 2026 - Introduction à R"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# Introduction
+
+##  Introduction
+
+Ce petit guide à été rédigé à l'intention des élèves du cours BIA104 afin de familiariser les étudiantes et étudiants à l'utilisation du langage de programmation R à travers l'IDE R Studio pour manipuler des tableaux de données 
+
+1. La première section [Introduction à R et RStudio] présente brièvement R et R Studio. 
+
+2. La seconde section [Utiliser RStudio et R Mardown] introduit quelques notions de bases en R et explique comment élaborer des scripts avec RStudio en format R ou R Markdown. 
+
+3. La troisième section [Script pour BLAST] comprend un script R que les étudiants doivent utiliser afin d'obtenir pour chacun de leurs inconnus la séquence d'acide nucléiques correspondant au gène ARNr 16S. Les étudiants pourront ensuite fournir les séquences à l'outil *Basic Local Alignment Search Tool* ([BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)) du National Center for Biotechnology Information (NCBI) afin d'attribuer une classification taxonomique à chacun de leurs inconnus.
+
+## Installer R et RStudio 
+
+R est disponible gratuitement pour les systèmes d'opération Windows, Mac et Linux sur le [site officiel des archives de R](https://cloud.r-project.org/). 
+
+Une fois R installé, vous pouvez procéder à l'installation de [RStudio](https://posit.co/download/rstudio-desktop/)
+
+## Références et liens utiles 
+
+[An Introduction to R](https://intro2r.com/)
+
+[Introduction à R par GRICAD Grenoble Alpes Recherche - Infrastructure de Calcul Intensif et de Données](https://formations_r.gricad-pages.univ-grenoble-alpes.fr/ced_intror/)
+
+[Série d’ateliers R du CSBQ](https://r.qcbs.ca/fr/workshops/)
+
+[Data Science avec R](https://bookdown.org/fousseynoubah/dswr_book/objets-dans-r.html) (Je recommande spécialement le **Chapitre 3 Objets dans R** et le **Chapitre 4 S’exprimer dans R**)
+

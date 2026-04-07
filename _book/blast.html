@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 BLAST | BIO1410 - 2024 - Analyses R</title>
+  <meta name="description" content="Chapter 3 BLAST | BIO1410 - 2024 - Analyses R" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 BLAST | BIO1410 - 2024 - Analyses R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 BLAST | BIO1410 - 2024 - Analyses R" />
+  
+  
+  
+
+<meta name="author" content="Karine Villeneuve" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-à-r-studio-et-r-markdown.html"/>
+<link rel="next" href="traitement-des-fastqs.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIO1410-2024</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="introduction-à-r-studio-et-r-markdown.html"><a href="introduction-à-r-studio-et-r-markdown.html"><i class="fa fa-check"></i><b>2</b> Introduction à R Studio et R Markdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-à-r-studio-et-r-markdown.html"><a href="introduction-à-r-studio-et-r-markdown.html#pourquoi-utiliser-r-markdown"><i class="fa fa-check"></i><b>2.1</b> Pourquoi utiliser R Markdown</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-à-r-studio-et-r-markdown.html"><a href="introduction-à-r-studio-et-r-markdown.html#utliser-r-markdowm"><i class="fa fa-check"></i><b>2.2</b> Utliser R Markdowm</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="introduction-à-r-studio-et-r-markdown.html"><a href="introduction-à-r-studio-et-r-markdown.html#bloc-de-codes"><i class="fa fa-check"></i><b>2.2.1</b> Bloc de codes</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction-à-r-studio-et-r-markdown.html"><a href="introduction-à-r-studio-et-r-markdown.html#définir-le-répertoire-de-travail-par-défault"><i class="fa fa-check"></i><b>2.2.2</b> Définir le répertoire de travail par défault</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction-à-r-studio-et-r-markdown.html"><a href="introduction-à-r-studio-et-r-markdown.html#importer-des-données"><i class="fa fa-check"></i><b>2.2.3</b> Importer des données</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="blast.html"><a href="blast.html"><i class="fa fa-check"></i><b>3</b> BLAST</a></li>
+<li class="chapter" data-level="4" data-path="traitement-des-fastqs.html"><a href="traitement-des-fastqs.html"><i class="fa fa-check"></i><b>4</b> Traitement des fastqs</a></li>
+<li class="chapter" data-level="5" data-path="statistiques.html"><a href="statistiques.html"><i class="fa fa-check"></i><b>5</b> Statistiques</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIO1410 - 2024 - Analyses R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="blast" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> BLAST<a href="blast.html#blast" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Vous avez vue en classe une figure représentant l’abondance relative des principaux genres bactéries présents sous la langue ainsi que sur la paume de la main dominante de chacun des scientifiques de votre classe. Vous aimeriez maintenant générer une figure similaire à celle présentée en classe mais comprenant uniquement vos échantillons. Pour ce faire, vos démonstrateurs ont rédigé ce petit script R. Il vous suffit de suivre les étapes suivantes :</p>
+<ol style="list-style-type: decimal">
+<li><p>Télécharger le tableau de données (bio1410_2024.csv) à partir du lien suivant <a href="">LIEN</a> et <strong>l’enregistrer sur le bureau (desktop)</strong> de l’ordinateur que vous utilisez.</p></li>
+<li><p>Créer un nouveau document de type R markdown.</p></li>
+<li><p>Insérer un nouveau bloc de code R de type setup indiquant le chemin vers le dossier/répertoire de travail par défault.</p></li>
+<li><p>Insérer un nouveau bloc de code R et y copier/coller le script ci-dessous.</p></li>
+<li><p>À la première ligne du code, copier/coller le nom de votre scientifique à partir de la liste des scienfitiques disponible au bas de la page. Attention, assurez-vous <strong>de ne pas</strong> avoir d’espace entre les guillemets et le nom.</p></li>
+<li><p>Exécuter les commandes en appuyant sur le bouton vert en haut à droite du bloc de code (<font color='green'> ▶ </font>).</p></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="blast.html#cb4-1" tabindex="-1"></a><span class="co"># Définir le nom de votre scientifique </span></span>
+<span id="cb4-2"><a href="blast.html#cb4-2" tabindex="-1"></a>ma_scientifique <span class="ot">=</span> <span class="st">&quot;Abigail A. Salyers&quot;</span></span>
+<span id="cb4-3"><a href="blast.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="blast.html#cb4-4" tabindex="-1"></a><span class="co"># Importer le tableau de données</span></span>
+<span id="cb4-5"><a href="blast.html#cb4-5" tabindex="-1"></a>tableau <span class="ot">=</span> <span class="fu">read.table</span>(<span class="at">file =</span> <span class="st">&quot;bio1410_2024.csv&quot;</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>, <span class="at">header=</span><span class="cn">TRUE</span>, <span class="at">check.names=</span><span class="cn">FALSE</span>) </span>
+<span id="cb4-6"><a href="blast.html#cb4-6" tabindex="-1"></a><span class="co"># Définir le rang taxonomique d&#39;intérêt </span></span>
+<span id="cb4-7"><a href="blast.html#cb4-7" tabindex="-1"></a>taxa_rank <span class="ot">=</span> <span class="st">&quot;Genus&quot;</span></span>
+<span id="cb4-8"><a href="blast.html#cb4-8" tabindex="-1"></a><span class="co"># Extraire vos échantillons </span></span>
+<span id="cb4-9"><a href="blast.html#cb4-9" tabindex="-1"></a>mes_échantillons <span class="ot">=</span> <span class="fu">subset</span>(tableau, Scientifique <span class="sc">==</span> ma_scientifique <span class="sc">&amp;</span> Abundance <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb4-10"><a href="blast.html#cb4-10" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="blast.html#cb4-11" tabindex="-1"></a><span class="co"># Afin de visualiser uniquementles 10 taxons les plus abondants on utilise ce qu&#39;on appelle une *for loop* ou boucle en français </span></span>
+<span id="cb4-12"><a href="blast.html#cb4-12" tabindex="-1"></a>empt_df <span class="ot">=</span> <span class="fu">list</span>() <span class="co"># On génère une liste vide que l&#39;on viendra populer avec les résultats de la foor loop</span></span>
+<span id="cb4-13"><a href="blast.html#cb4-13" tabindex="-1"></a>i <span class="ot">=</span> <span class="dv">0</span> <span class="co"># Ensuite on définit un premier itérateur (de type numérique) qui compte le nombre de loop effectué</span></span>
+<span id="cb4-14"><a href="blast.html#cb4-14" tabindex="-1"></a><span class="co"># Début de la for loop</span></span>
+<span id="cb4-15"><a href="blast.html#cb4-15" tabindex="-1"></a><span class="cf">for</span> (région_échantillonnée <span class="cf">in</span> <span class="fu">unique</span>(mes_échantillons<span class="sc">$</span>Region)){ <span class="co"># Cette séquence est le début de la loop où l&#39;itérateur de gauche (région) </span></span>
+<span id="cb4-16"><a href="blast.html#cb4-16" tabindex="-1"></a>    i <span class="ot">=</span> i <span class="sc">+</span> <span class="dv">1</span>                                           <span class="co"># représente chaque item de l&#39;itérateur de droite (mes_échantillons$Région)</span></span>
+<span id="cb4-17"><a href="blast.html#cb4-17" tabindex="-1"></a>    sample <span class="ot">=</span> <span class="fu">subset</span>(mes_échantillons, Region <span class="sc">==</span> région_échantillonnée) <span class="co"># Générer une nouvelle table de données basée sur la variable définit par l&#39;itérateur </span></span>
+<span id="cb4-18"><a href="blast.html#cb4-18" tabindex="-1"></a>    total_abundance <span class="ot">=</span> <span class="fu">aggregate</span>(sample<span class="sc">$</span>Abundance, <span class="at">by =</span> <span class="fu">list</span>(<span class="at">taxa_rank =</span> sample[[taxa_rank]]), <span class="at">FUN =</span> sum) <span class="co"># Additionner ensemble les ASVs du même genres</span></span>
+<span id="cb4-19"><a href="blast.html#cb4-19" tabindex="-1"></a>    top  <span class="ot">=</span><span class="fu">head</span>(total_abundance[<span class="fu">order</span>(total_abundance<span class="sc">$</span>x, <span class="at">decreasing =</span> T),], <span class="at">n =</span> <span class="dv">10</span>) <span class="co"># filtrer en order croissant pour identifer les 10 plus abondants</span></span>
+<span id="cb4-20"><a href="blast.html#cb4-20" tabindex="-1"></a>    others_df<span class="ot">=</span>sample[<span class="sc">!</span>sample[[taxa_rank]] <span class="sc">%in%</span> top<span class="sc">$</span>taxa_rank,] <span class="co"># identifier les autres genres ne faisant pas partie des 10 plus abonants </span></span>
+<span id="cb4-21"><a href="blast.html#cb4-21" tabindex="-1"></a>    others_list <span class="ot">=</span> others_df[[taxa_rank]] <span class="co"># extraire leur nom du tableau de données dans une liste  </span></span>
+<span id="cb4-22"><a href="blast.html#cb4-22" tabindex="-1"></a>    sample[sample[[taxa_rank]] <span class="sc">%in%</span> others_list,][[taxa_rank]] <span class="ot">=</span> <span class="st">&quot;Autres&quot;</span> <span class="co"># Renommer leur genre pour Autres</span></span>
+<span id="cb4-23"><a href="blast.html#cb4-23" tabindex="-1"></a>    empt_df[[i]] <span class="ot">=</span> sample <span class="co"># Enregistrer ce nouveau tableau </span></span>
+<span id="cb4-24"><a href="blast.html#cb4-24" tabindex="-1"></a>}</span>
+<span id="cb4-25"><a href="blast.html#cb4-25" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">do.call</span>(<span class="st">&quot;rbind&quot;</span>,empt_df) <span class="co"># Combiner les deux tables de données en une seule </span></span>
+<span id="cb4-26"><a href="blast.html#cb4-26" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="blast.html#cb4-27" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="blast.html#cb4-28" tabindex="-1"></a><span class="co"># Maintenant que nous avons notre tableau de données avec seulement les 10 taxons les plus abondants sous la langue et la main</span></span>
+<span id="cb4-29"><a href="blast.html#cb4-29" tabindex="-1"></a><span class="co"># nous pouvons commencer à travailler sur le graphique. On commence par générer une liste de couleurs associées à chacun des taxons</span></span>
+<span id="cb4-30"><a href="blast.html#cb4-30" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="blast.html#cb4-31" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">nrow</span>(<span class="fu">data.frame</span>(<span class="fu">unique</span>(df<span class="sc">$</span>Genus))) <span class="co"># On calcule le nobre de genre unique que nous avons </span></span>
+<span id="cb4-32"><a href="blast.html#cb4-32" tabindex="-1"></a>palette <span class="ot">=</span> randomcoloR<span class="sc">::</span><span class="fu">distinctColorPalette</span>(n) <span class="co"># On génère une nouvelle palette </span></span>
+<span id="cb4-33"><a href="blast.html#cb4-33" tabindex="-1"></a>my_scale <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">scale_fill_manual</span>(<span class="at">name =</span> <span class="fu">as.character</span>(taxa_rank), <span class="at">values =</span> palette, <span class="at">na.translate =</span> <span class="cn">FALSE</span>, <span class="at">drop =</span> <span class="cn">TRUE</span>, <span class="at">limits =</span> force) <span class="co"># On assigne une couleur à chacun de nos genres uniques </span></span>
+<span id="cb4-34"><a href="blast.html#cb4-34" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="blast.html#cb4-35" tabindex="-1"></a><span class="co"># Nous pouvons finalement générer le graphique </span></span>
+<span id="cb4-36"><a href="blast.html#cb4-36" tabindex="-1"></a>graphique <span class="ot">=</span> ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Region, <span class="at">weight =</span> Abundance, <span class="at">fill =</span> .data[[taxa_rank]])) <span class="sc">+</span></span>
+<span id="cb4-37"><a href="blast.html#cb4-37" tabindex="-1"></a>  <span class="fu">facet_grid</span>(<span class="sc">~</span> Region, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-38"><a href="blast.html#cb4-38" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb4-39"><a href="blast.html#cb4-39" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;Abondance relative (%)&quot;</span>) <span class="sc">+</span></span>
+<span id="cb4-40"><a href="blast.html#cb4-40" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>)) <span class="sc">+</span></span>
+<span id="cb4-41"><a href="blast.html#cb4-41" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb4-42"><a href="blast.html#cb4-42" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>), <span class="at">strip.text.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb4-43"><a href="blast.html#cb4-43" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">50</span>, <span class="dv">0</span>))) <span class="sc">+</span> </span>
+<span id="cb4-44"><a href="blast.html#cb4-44" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">&quot;Genre&quot;</span>, <span class="at">title.position =</span> <span class="st">&quot;top&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb4-45"><a href="blast.html#cb4-45" tabindex="-1"></a>  my_scale</span>
+<span id="cb4-46"><a href="blast.html#cb4-46" tabindex="-1"></a></span>
+<span id="cb4-47"><a href="blast.html#cb4-47" tabindex="-1"></a>graphique <span class="co"># visualiser le graphique produit </span></span>
+<span id="cb4-48"><a href="blast.html#cb4-48" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="blast.html#cb4-49" tabindex="-1"></a><span class="co"># Enregistrer en format coma separeted value (csv) votre tableau d&#39;abondance </span></span>
+<span id="cb4-50"><a href="blast.html#cb4-50" tabindex="-1"></a><span class="fu">write.csv</span>(df, <span class="st">&quot;df.csv&quot;</span>, <span class="at">quote=</span><span class="cn">FALSE</span>, <span class="at">sep=</span><span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<p><strong>Scientifiques</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">A - J</th>
+<th align="center">K - V</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Abigail A. Salyers</td>
+<td align="center">Kalpana Chawla</td>
+</tr>
+<tr class="even">
+<td align="center">Alice Augusta Ball</td>
+<td align="center">Khatijah Mohammad Yousoff</td>
+</tr>
+<tr class="odd">
+<td align="center">Ana Roque de Duprey</td>
+<td align="center">Leone Norwood Farrell</td>
+</tr>
+<tr class="even">
+<td align="center">Angelina Fanny Hesse</td>
+<td align="center">Lise Meitner</td>
+</tr>
+<tr class="odd">
+<td align="center">Augusta Ada Byron Lovelace</td>
+<td align="center">Margaret Elaine Heafield Hamilton</td>
+</tr>
+<tr class="even">
+<td align="center">Chien-Shiung Wu</td>
+<td align="center">Marie Maynard Daly Clark</td>
+</tr>
+<tr class="odd">
+<td align="center">Creola Katherine Coleman Johnson</td>
+<td align="center">Marjory Stephenson</td>
+</tr>
+<tr class="even">
+<td align="center">Dorothy Hodgkin</td>
+<td align="center">Mary Golda Ross</td>
+</tr>
+<tr class="odd">
+<td align="center">Dorothy Jean Johnson Vaughan</td>
+<td align="center">Mary Jackson</td>
+</tr>
+<tr class="even">
+<td align="center">Elizabeth Bugie Gregory</td>
+<td align="center">Nettie Stevens</td>
+</tr>
+<tr class="odd">
+<td align="center">Elizabeth Garrett Anderson</td>
+<td align="center">Rachel Carson</td>
+</tr>
+<tr class="even">
+<td align="center">Emmanuelle Marie Charpentier</td>
+<td align="center">Rosalind Elsie Franklin</td>
+</tr>
+<tr class="odd">
+<td align="center">Emmy Klieneberger-Nobel</td>
+<td align="center">Roseli Ocampo-Friedmann</td>
+</tr>
+<tr class="even">
+<td align="center">Farah Alibay</td>
+<td align="center">Ruth Ella Moore</td>
+</tr>
+<tr class="odd">
+<td align="center">Floy Agnes Naranjo Stroud Lee</td>
+<td align="center">Sally Kristen Ride</td>
+</tr>
+<tr class="even">
+<td align="center">Frances Joan Estelle Wagner</td>
+<td align="center">Vera Florence Cooper Rubin</td>
+</tr>
+<tr class="odd">
+<td align="center">Gladys Mae Brown West</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Jane Goodale</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">Jessie Isabelle Price</td>
+<td align="center"></td>
+</tr>
+<tr class="even">
+<td align="center">Johanna Westerdijk</td>
+<td align="center"></td>
+</tr>
+<tr class="odd">
+<td align="center">June Dalziel Hart Almeida</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-à-r-studio-et-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="traitement-des-fastqs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-BLAST.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

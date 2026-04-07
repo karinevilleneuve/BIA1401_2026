@@ -1,0 +1,6 @@
+# Installer R et RStudio 
+
+R est disponible gratuitement pour les systèmes d'opération Windows, Mac et Linux sur le [site officiel des archives de R](https://cloud.r-project.org/). 
+
+Une fois R installé, vous pouvez procéder à l'installation de [RStudio](https://posit.co/download/rstudio-desktop/)
+

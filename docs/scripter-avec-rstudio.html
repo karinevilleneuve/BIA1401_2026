@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapitre 3 Scripter avec RStudio | BIA1401 2026 - Introduction à R</title>
+  <meta name="description" content="Chapitre 3 Scripter avec RStudio | BIA1401 2026 - Introduction à R" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapitre 3 Scripter avec RStudio | BIA1401 2026 - Introduction à R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapitre 3 Scripter avec RStudio | BIA1401 2026 - Introduction à R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction-à-r-et-rstudio.html"/>
+<link rel="next" href="script-pour-blast.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">BIA1401-2024</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Laboratoire 3</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#installer-r-et-rstudio"><i class="fa fa-check"></i><b>1.2</b> Installer R et RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#r%C3%A9f%C3%A9rences-et-liens-utiles"><i class="fa fa-check"></i><b>1.3</b> Références et liens utiles</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="introduction-à-r-et-rstudio.html"><a href="introduction-à-r-et-rstudio.html"><i class="fa fa-check"></i><b>2</b> Introduction à R et RStudio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introduction-à-r-et-rstudio.html"><a href="introduction-à-r-et-rstudio.html#quest-ce-que-r-et-rstudio"><i class="fa fa-check"></i><b>2.1</b> Qu’est-ce que R et Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="introduction-à-r-et-rstudio.html"><a href="introduction-à-r-et-rstudio.html#composants-de-rstudio"><i class="fa fa-check"></i><b>2.2</b> Composants de RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html"><i class="fa fa-check"></i><b>3</b> Scripter avec RStudio</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html#cr%C3%A9er-un-script"><i class="fa fa-check"></i><b>3.1</b> Créer un script</a></li>
+<li class="chapter" data-level="3.2" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html#ex%C3%A9cuter-une-commande"><i class="fa fa-check"></i><b>3.2</b> Exécuter une commande</a></li>
+<li class="chapter" data-level="3.3" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html#r%C3%A9pertoire-de-travail"><i class="fa fa-check"></i><b>3.3</b> Répertoire de travail</a></li>
+<li class="chapter" data-level="3.4" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html#utiliser-des-fonctions-r"><i class="fa fa-check"></i><b>3.4</b> Utiliser des fonctions R</a></li>
+<li class="chapter" data-level="3.5" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html#commentaires"><i class="fa fa-check"></i><b>3.5</b> Commentaires</a></li>
+<li class="chapter" data-level="3.6" data-path="scripter-avec-rstudio.html"><a href="scripter-avec-rstudio.html#importer-un-taleau-de-donn%C3%A9es"><i class="fa fa-check"></i><b>3.6</b> Importer un taleau de données</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="script-pour-blast.html"><a href="script-pour-blast.html"><i class="fa fa-check"></i><b>4</b> Script pour BLAST</a></li>
+<li class="chapter" data-level="5" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>5</b> R Markdown</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="r-markdown.html"><a href="r-markdown.html#utliser-r-markdowm"><i class="fa fa-check"></i><b>5.1</b> Utliser R Markdowm</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="r-markdown.html"><a href="r-markdown.html#bloc-de-codes"><i class="fa fa-check"></i><b>5.1.1</b> Bloc de codes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="installer-r-et-rstudio-1.html"><a href="installer-r-et-rstudio-1.html"><i class="fa fa-check"></i><b>6</b> Installer R et RStudio</a></li>
+<li class="chapter" data-level="7" data-path="références-et-liens-utiles-1.html"><a href="références-et-liens-utiles-1.html"><i class="fa fa-check"></i><b>7</b> Références et liens utiles</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">BIA1401 2026 - Introduction à R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="scripter-avec-rstudio" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapitre 3</span> Scripter avec RStudio<a href="scripter-avec-rstudio.html#scripter-avec-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Avant de débuter voici quelques bonnes pratiques et astuces du code R :</p>
+<p><strong>Nom des variables</strong>:</p>
+<ul>
+<li>Autant que possible, utiliser des noms courts et explicites pour vos variables. Nommer une variable <code>var</code> n’est pas très instructif.</li>
+<li>Utilisez un trait de soulignement <code>_</code> pour séparer les mots d’un nom ou essayez d’être constant!</li>
+<li>Évitez les noms d’objets de fonction qui existe dans R (e.g. <code>c</code> ou <code>table</code>)</li>
+</ul>
+<p><strong>Espace</strong> :</p>
+<ul>
+<li>Ajoutez des espaces autour de tous les opérateurs (<code>=</code>, <code>+</code>, <code>-</code>, <code>&lt;-</code>, etc.) pour rendre le code plus lisible</li>
+<li>Mettez un espace après une virgule, mais jamais avant (comme en français).</li>
+</ul>
+<p><strong>Valeurs de vos tableaux de données</strong></p>
+<p>Les noms des colonnes et leur contenu n’ont ni accent, ni d’espace, ni caractères spéciaux puisque R préfère une seule suite de caractères comme titre. Par exemple, pour “Nombre d’espèces” il est préférable d’utiliser la forme “num_sp”.</p>
+<p><strong>Autre</strong></p>
+<p>La touche <code>Tabulation</code> ou <code>Tab</code> permet de compléter automatiquement les noms d’objets/fonction. Çela accélère l’entrée des commandes et évite les erreurs de frappe.</p>
+<p>R est sensible à la casse, i.e. <code>A</code> est différent de <code>a</code>.</p>
+<div id="créer-un-script" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Créer un script<a href="scripter-avec-rstudio.html#cr%C3%A9er-un-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lorsque vous lancez RStudio, le premier élément que vous voyez à gauche de l’écran correspond à la console. Pour créer un nouveau script vous devez cliquez sur l’icone de la page blanche avec le symbole <code>+</code> vert en haut à gauche complètement. Dans le menu déroulant sélectionner <code>R Script</code>. La section <a href="r-markdown.html#r-markdown">R Markdown</a> aborde une différentes manière de rédiger ses scripts favorisant l’annotation et l’organisation du code en plus de l’exportation des scripts sous différents formats (PDF, HTML, etc.) pour le partage des scripts.</p>
+</div>
+<div id="exécuter-une-commande" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Exécuter une commande<a href="scripter-avec-rstudio.html#ex%C3%A9cuter-une-commande" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Déplacez votre curseur sur la ligne que vous voulez exécuter puis cliquer sur le bouton <code>run</code> en haut à gauche. Vous pouvez aussi sélectionner plusieurs lignes à la fois. Le raccourcit clavier est <code>Alt</code> + <code>Enter</code> pour les utilisateurs Windows et <code>Command</code> + <code>Enter</code> pour les utilisateurs Mac.</p>
+</div>
+<div id="répertoire-de-travail" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Répertoire de travail<a href="scripter-avec-rstudio.html#r%C3%A9pertoire-de-travail" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lorsque l’on demande à R d’importer un fichier, R recherche le nom du fichier qu’on lui a transmis dans le répertoire de travail (<em>Working Directory</em>, <strong>wd</strong>) actuellement défini, qui correspond au répertoire dans lequel R est actuellement en train de s’exécuter.</p>
+<ul>
+<li><p>Pour afficher le répertoire de travail actuel on utilise la fonction <code>getwd()</code>.<br />
+</p></li>
+<li><p>Pour définir un répertoire de travail il existe plusieurs options :</p>
+<ul>
+<li>Utiliser la fonction <code>setwd()</code> : on inscrit entre les parenthèses et entre guillemets le “chemin” vers le dossier.</li>
+<li>Utiliser l’onglet <strong>Environnement</strong> : sélectionner un dossier ⇒ logo rouage (More) ⇒ <code>Set As Working Directory</code>.</li>
+<li>À partir de l’onglet <code>Session</code> : dans le menu déroulant sélectionner <code>Set Working Directory</code> ⇒ <code>Change directory</code>.</li>
+</ul></li>
+</ul>
+<p>Par exemple, par défault, le répertoire de travail des postes informatiques de l’UQAM est le dossier <code>Documents</code>. Si vous exécuter la fonction <code>getwd()</code> vous devriez obtenir un résultat similaire à celui-ci (ignorer le <code>[1]</code>) :</p>
+<pre><code>getwd()
+[1] &quot;C:\Users\votrenom\Documents&quot;</code></pre>
+<p><strong>Attention</strong> l’expression du chemin varie en fonction du système d’exploitation de l’ordinateur. Celui présenté plus haut est typique à Windows alors que pour Mac et Linux le chemin ressemble plutôt à ceci :</p>
+<pre><code>getwd()
+[1] &quot;/Users/votrenom/Documents&quot;</code></pre>
+</div>
+<div id="utiliser-des-fonctions-r" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Utiliser des fonctions R<a href="scripter-avec-rstudio.html#utiliser-des-fonctions-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Le nom d’une fonction dans R est toujours suivi d’une paire de parenthèses même s’il n’y a rien de contenu entre les parenthèses (pensez à <code>getwd()</code>). Le ou les arguments d’une fonction sont placés entre parenthèses et séparés par des virgules. Vous pouvez considérer un argument comme un moyen de personnaliser l’utilisation ou le comportement d’une fonction. Enfin, l’un des principaux défis de R est de savoir quelle fonction utiliser pour une tâche particulière et comment l’utiliser. Heureusement, chaque fonction est toujours associée à un document d’aide qui explique comment utiliser la fonction (une recherche rapide sur Google vous aidera également généralement). Pour trouver de l’aide sur une fonction le point d’interrogation peut être utilisé.</p>
+<p>Exemple :</p>
+<pre><code>?getwd()</code></pre>
+</div>
+<div id="commentaires" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Commentaires<a href="scripter-avec-rstudio.html#commentaires" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Le symbole <code>#</code> est utilisé pour insérer des commentaires au sein d’un script. Cela indique à R d’ignorer tout ce qui se trouve sur une ligne à la suite du symbole <code>#</code> lors de l’exécution de commandes. Considérant que les commentaires sont ignorés par R lors de l’exécution de scripts, il est possible de se laisser des notes indiquant ce qui a été fait. Un script enrichi de commentaires est une excellente façon de collaborer à une science reproductible.</p>
+<p>Exemple :</p>
+<pre><code># J&#39;utilise la commde getwd() pour obtenir mon répertoire de travail 
+getwd()</code></pre>
+</div>
+<div id="importer-un-taleau-de-données" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Importer un taleau de données<a href="scripter-avec-rstudio.html#importer-un-taleau-de-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un tableau de données est une liste de vecteurs rangés colonne par colonne. Chaque colonne du tableau correspond à une variable, chaque ligne à une observation. Les variables peuvent être de différents types (numérique, booléen, character, …). Sous R, les tableaux de données sont des objets particuliers appelés <em>data.frame</em>.</p>
+<p>En analyse de données, les fichiers sont typiquement enregistrer sous le format <em>Comma Seperated Value</em> (csv). CSV est un format de fichier de texte simple utilisé pour stocker les données tabulaires, comme des feuilles de calcul ou des bases de données. Chaque ligne d’un fichier CSV représente une ligne et les valeurs d’une ligne sont séparées par des virgules. C’est un format de fichier simple et largement pris en charge qui permet d’importer et d’exporter facilement des données entre différentes applications logicielles.</p>
+<p>Pour importer ce type de fichier dans R on peut utiliser la fonction <code>read.csv</code>. Les arguments fréquemments utilisés pour cette fonction sont les suivants :</p>
+<ul>
+<li><code>file</code> : Spécifier le nom du fichier (inclure l’extension)</li>
+<li><code>header</code> : Indiquer si la première ligne de notre tableau correspond au nom des colonnes (valeurs possibles TRUE/FALSE)</li>
+<li><code>row.names</code> : Indiquer quelle colonne de notre tableau correspond au nom des rangés (valeurs possible = numérique correspondant au numéro de la colonne)</li>
+<li><code>sep</code> : Spécifier quel caractère doit servir de séparateur pour les colonnes (il peut arriver que d’autre symbole tels que le point-virgule servent de séparateur plutôt que la virgule)</li>
+<li><code>check.name</code> : Ne pas systématiquement remplacer le trait d’union par un point (valeurs possible TRUE/FALSE)</li>
+</ul>
+<p>Exemple :</p>
+<pre><code>df = read.csv(file = &quot;nom_fichier.csv&quot;, header = TRUE, row.names = 1, sep = &quot;,&quot;, check.names = FALSE)  </code></pre>
+<p>Pour un tableau en format <em>tab delimited</em> on peut utiliser la fonction <code>read.table</code> et spécifier <code>\t</code> comme séparateur.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction-à-r-et-rstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="script-pour-blast.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/02-Script.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+</body>
+
+</html>
