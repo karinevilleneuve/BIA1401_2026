@@ -1,5 +1,9 @@
-[![Build Status](https://travis-ci.com/rstudio/bookdown-demo.svg?branch=master)](https://travis-ci.com/rstudio/bookdown-demo)
+# BIA1401 - 2026 
 
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "[Get Started](https://bookdown.org/yihui/bookdown/get-started.html)" at https://bookdown.org/yihui/bookdown/ for how to compile this example into HTML. You may generate a copy of the book in `bookdown::pdf_book` format by calling `bookdown::render_book('index.Rmd', 'bookdown::pdf_book')`. More detailed instructions are available here https://bookdown.org/yihui/bookdown/build-the-book.html.
+Bienvenue sur le GitHub dédié aux étudiants de la cohorte 2026 du cours BIA1401 de l'UQAM !
 
-You can find the preview of this example at https://bookdown.org/yihui/bookdown-demo/.
+Suivre ce lien pour accéder au matériel pédagogique :  https://karinevilleneuve.github.io/BIA1401_2026/
+
+
+<p align="center">
+    <img src="./data/UQAM_logo.svg" alt="Logo" width="80" height="80">
