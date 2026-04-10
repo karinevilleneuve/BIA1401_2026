@@ -172,6 +172,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#filtrer-les-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1</b> Filtrer les données</a></li>
 <li class="chapter" data-level="4.2" data-path="script-pour-blast.html"><a href="script-pour-blast.html#utiliser-blast"><i class="fa fa-check"></i><b>4.2</b> Utiliser BLAST</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html"><i class="fa fa-check"></i><b>5</b> Alignement de séquences</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#pourquoi-aligner-des-s%C3%A9quences"><i class="fa fa-check"></i><b>5.1</b> Pourquoi aligner des séquences</a></li>
+<li class="chapter" data-level="5.2" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#objectif-de-lexercice"><i class="fa fa-check"></i><b>5.2</b> Objectif de l’exercice</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="créer-une-liste-avec-le-nom-des-bactéries..html"><a href="créer-une-liste-avec-le-nom-des-bactéries..html"><i class="fa fa-check"></i><b>6</b> Créer une liste avec le nom des Bactéries.</a></li>
+<li class="chapter" data-level="7" data-path="puisque-dans-la-base-de-données-le-genre-et-lepithète.html"><a href="puisque-dans-la-base-de-données-le-genre-et-lepithète.html"><i class="fa fa-check"></i><b>7</b> Puisque dans la base de données, le genre et l’epithète</a></li>
 </ul>
 
       </nav>
@@ -319,38 +326,19 @@ et se terminer avec les caractères suivant : <code>```</code>. Un bloc de code 
 </div>
 <div id="exploration-de-données" class="section level3 hasAnchor" number="3.3.5">
 <h3><span class="header-section-number">3.3.5</span> Exploration de données<a href="utiliser-rstudio-et-r-markdown.html#exploration-de-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>R comprend plusieurs jeux de données qui sont souvent utilisés comme exemple afin de démontrer les fonctions de R (<a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">liste complète</a>). Aujourd’hui nous utiliserons le jeu de données <code>penguins_raw</code> qui comprend différentes données (longueur des nageoires, masse corporelle, dimensions du bec et sexe) de trois espèces de manchots retrouvés sur les trois Îles de l’archipel Palmer en Antarctique.</p>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="utiliser-rstudio-et-r-markdown.html#cb9-1" tabindex="-1"></a>df_manchot <span class="ot">=</span> penguins_raw</span>
-<span id="cb9-2"><a href="utiliser-rstudio-et-r-markdown.html#cb9-2" tabindex="-1"></a><span class="fu">head</span>(df_manchot)  <span class="co"># Afficher les premières lignes</span></span>
-<span id="cb9-3"><a href="utiliser-rstudio-et-r-markdown.html#cb9-3" tabindex="-1"></a><span class="fu">tail</span>(df_manchot)  <span class="co"># Afficher les dernières lignes</span></span>
-<span id="cb9-4"><a href="utiliser-rstudio-et-r-markdown.html#cb9-4" tabindex="-1"></a><span class="fu">summary</span>(df_manchot)  <span class="co"># Obtenir des statistiques descriptives</span></span>
-<span id="cb9-5"><a href="utiliser-rstudio-et-r-markdown.html#cb9-5" tabindex="-1"></a><span class="fu">str</span>(df_manchot)  <span class="co"># Obtenir la structure des données</span></span></code></pre></div>
-</details>
-<p><strong>Sélection de colonnes et utilisation de filtres</strong></p>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="utiliser-rstudio-et-r-markdown.html#cb10-1" tabindex="-1"></a>df_manchot<span class="sc">$</span>Island  <span class="co"># Sélectionner la colonne Island </span></span>
-<span id="cb10-2"><a href="utiliser-rstudio-et-r-markdown.html#cb10-2" tabindex="-1"></a><span class="fu">unique</span>(df_manchot<span class="sc">$</span>Island) <span class="co"># Affiche les valeurs uniques présentent dans la colonne Island </span></span>
-<span id="cb10-3"><a href="utiliser-rstudio-et-r-markdown.html#cb10-3" tabindex="-1"></a><span class="co"># Garder uniquement les manchots de l&#39;île Dream</span></span>
-<span id="cb10-4"><a href="utiliser-rstudio-et-r-markdown.html#cb10-4" tabindex="-1"></a>df_manchot_dream <span class="ot">=</span> <span class="fu">subset</span>(df_manchot, Island <span class="sc">==</span> <span class="st">&quot;Dream&quot;</span>) </span>
-<span id="cb10-5"><a href="utiliser-rstudio-et-r-markdown.html#cb10-5" tabindex="-1"></a><span class="co"># Garder uniquement les petits manchots </span></span>
-<span id="cb10-6"><a href="utiliser-rstudio-et-r-markdown.html#cb10-6" tabindex="-1"></a>df_manchot_petit <span class="ot">=</span> <span class="fu">subset</span>(df_manchot, <span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">3000</span>)</span>
-<span id="cb10-7"><a href="utiliser-rstudio-et-r-markdown.html#cb10-7" tabindex="-1"></a><span class="co"># Utiliser plusieurs conditions pour garder uniquement les petits manchots de l&#39;île Dream </span></span>
-<span id="cb10-8"><a href="utiliser-rstudio-et-r-markdown.html#cb10-8" tabindex="-1"></a>df_dream_petit <span class="ot">=</span> <span class="fu">subset</span>(df_manchot, Island <span class="sc">==</span> <span class="st">&quot;Dream&quot;</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">3000</span>) </span></code></pre></div>
-</details>
 <p><strong>Combiner des tableaux de données</strong></p>
 <p>Lorsque nous avons plusieurs jeux de données contenant des informations complémentaires, nous pouvons les combiner avec la fonction <code>merge()</code>.</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="utiliser-rstudio-et-r-markdown.html#cb11-1" tabindex="-1"></a>df_info_gen <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;Marie Curie&quot;</span>, <span class="st">&quot;Lise Meitner&quot;</span>, <span class="st">&quot;Barbara McClintock&quot;</span>), </span>
-<span id="cb11-2"><a href="utiliser-rstudio-et-r-markdown.html#cb11-2" tabindex="-1"></a>                         <span class="at">Born =</span> <span class="fu">c</span>(<span class="dv">1867</span>, <span class="dv">1878</span>, <span class="dv">1902</span>),</span>
-<span id="cb11-3"><a href="utiliser-rstudio-et-r-markdown.html#cb11-3" tabindex="-1"></a>                         <span class="at">Nobels =</span> <span class="fu">c</span>(<span class="st">&quot;Physics - Chemistry&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Physiology or Medicine&quot;</span>))</span>
-<span id="cb11-4"><a href="utiliser-rstudio-et-r-markdown.html#cb11-4" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="utiliser-rstudio-et-r-markdown.html#cb11-5" tabindex="-1"></a>df_info_educ <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;Marie Curie&quot;</span>, <span class="st">&quot;Lise Meitner&quot;</span>, <span class="st">&quot;Barbara McClintock&quot;</span>), </span>
-<span id="cb11-6"><a href="utiliser-rstudio-et-r-markdown.html#cb11-6" tabindex="-1"></a>                          <span class="at">Study =</span> <span class="fu">c</span>(<span class="st">&quot;Physics - Chemistry&quot;</span>, <span class="st">&quot;Nuclear physics&quot;</span>, <span class="st">&quot;Cytogenetics&quot;</span>), </span>
-<span id="cb11-7"><a href="utiliser-rstudio-et-r-markdown.html#cb11-7" tabindex="-1"></a>                          <span class="at">Institutions =</span> <span class="fu">c</span>(<span class="st">&quot;University of Paris&quot;</span>, <span class="st">&quot;University of Vienna&quot;</span>, <span class="st">&quot;University of Missouri&quot;</span>))</span>
-<span id="cb11-8"><a href="utiliser-rstudio-et-r-markdown.html#cb11-8" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="utiliser-rstudio-et-r-markdown.html#cb11-9" tabindex="-1"></a><span class="co"># Fusionner les deux tableaux sur la colonne &quot;Name&quot;</span></span>
-<span id="cb11-10"><a href="utiliser-rstudio-et-r-markdown.html#cb11-10" tabindex="-1"></a>df_info_all <span class="ot">=</span> <span class="fu">merge</span>(df_info_gen, df_info_educ, <span class="at">by =</span> <span class="st">&quot;Name&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="utiliser-rstudio-et-r-markdown.html#cb9-1" tabindex="-1"></a>df_info_gen <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;Marie Curie&quot;</span>, <span class="st">&quot;Lise Meitner&quot;</span>, <span class="st">&quot;Barbara McClintock&quot;</span>), </span>
+<span id="cb9-2"><a href="utiliser-rstudio-et-r-markdown.html#cb9-2" tabindex="-1"></a>                         <span class="at">Born =</span> <span class="fu">c</span>(<span class="dv">1867</span>, <span class="dv">1878</span>, <span class="dv">1902</span>),</span>
+<span id="cb9-3"><a href="utiliser-rstudio-et-r-markdown.html#cb9-3" tabindex="-1"></a>                         <span class="at">Nobels =</span> <span class="fu">c</span>(<span class="st">&quot;Physics - Chemistry&quot;</span>, <span class="cn">NA</span>, <span class="st">&quot;Physiology or Medicine&quot;</span>))</span>
+<span id="cb9-4"><a href="utiliser-rstudio-et-r-markdown.html#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="utiliser-rstudio-et-r-markdown.html#cb9-5" tabindex="-1"></a>df_info_educ <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">&quot;Marie Curie&quot;</span>, <span class="st">&quot;Lise Meitner&quot;</span>, <span class="st">&quot;Barbara McClintock&quot;</span>), </span>
+<span id="cb9-6"><a href="utiliser-rstudio-et-r-markdown.html#cb9-6" tabindex="-1"></a>                          <span class="at">Study =</span> <span class="fu">c</span>(<span class="st">&quot;Physics - Chemistry&quot;</span>, <span class="st">&quot;Nuclear physics&quot;</span>, <span class="st">&quot;Cytogenetics&quot;</span>), </span>
+<span id="cb9-7"><a href="utiliser-rstudio-et-r-markdown.html#cb9-7" tabindex="-1"></a>                          <span class="at">Institutions =</span> <span class="fu">c</span>(<span class="st">&quot;University of Paris&quot;</span>, <span class="st">&quot;University of Vienna&quot;</span>, <span class="st">&quot;University of Missouri&quot;</span>))</span>
+<span id="cb9-8"><a href="utiliser-rstudio-et-r-markdown.html#cb9-8" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="utiliser-rstudio-et-r-markdown.html#cb9-9" tabindex="-1"></a><span class="co"># Fusionner les deux tableaux sur la colonne &quot;Name&quot;</span></span>
+<span id="cb9-10"><a href="utiliser-rstudio-et-r-markdown.html#cb9-10" tabindex="-1"></a>df_info_all <span class="ot">=</span> <span class="fu">merge</span>(df_info_gen, df_info_educ, <span class="at">by =</span> <span class="st">&quot;Name&quot;</span>, <span class="at">all =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </details>
 <p>Explication :</p>
 <ul>
@@ -358,6 +346,26 @@ et se terminer avec les caractères suivant : <code>```</code>. Un bloc de code 
 </li>
 <li><code>all = TRUE</code> : Effectue une jointure externe (<code>outer join</code>), conservant toutes les lignes des deux data frames, même si elles ne correspondent pas parfaitement. Si <code>all = FALSE</code> (par défaut), seuls les ID présents dans les deux tables sont conservés (<code>inner join</code>). <code>all.x = TRUE</code> conserverait toutes les lignes de <code>df_info_gen</code>, et <code>all.y = TRUE</code> celles de <code>df_info_educ</code>(jointure gauche/droite).</li>
 </ul>
+<p><strong>Utilisation de jeux de données existants</strong></p>
+<p>R comprend plusieurs jeux de données qui sont souvent utilisés comme exemple afin de démontrer les fonctions de R (<a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html">liste complète</a>). Aujourd’hui nous utiliserons le jeu de données <code>penguins_raw</code> qui comprend différentes données (longueur des nageoires, masse corporelle, dimensions du bec et sexe) de trois espèces de manchots retrouvés sur les trois Îles de l’archipel Palmer en Antarctique.</p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="utiliser-rstudio-et-r-markdown.html#cb10-1" tabindex="-1"></a>df_manchot <span class="ot">=</span> penguins_raw</span>
+<span id="cb10-2"><a href="utiliser-rstudio-et-r-markdown.html#cb10-2" tabindex="-1"></a><span class="fu">head</span>(df_manchot)  <span class="co"># Afficher les premières lignes</span></span>
+<span id="cb10-3"><a href="utiliser-rstudio-et-r-markdown.html#cb10-3" tabindex="-1"></a><span class="fu">tail</span>(df_manchot)  <span class="co"># Afficher les dernières lignes</span></span>
+<span id="cb10-4"><a href="utiliser-rstudio-et-r-markdown.html#cb10-4" tabindex="-1"></a><span class="fu">summary</span>(df_manchot)  <span class="co"># Obtenir des statistiques descriptives</span></span>
+<span id="cb10-5"><a href="utiliser-rstudio-et-r-markdown.html#cb10-5" tabindex="-1"></a><span class="fu">str</span>(df_manchot)  <span class="co"># Obtenir la structure des données</span></span></code></pre></div>
+</details>
+<p><strong>Sélection de colonnes et utilisation de filtres</strong></p>
+<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="utiliser-rstudio-et-r-markdown.html#cb11-1" tabindex="-1"></a>df_manchot<span class="sc">$</span>Island  <span class="co"># Sélectionner la colonne Island </span></span>
+<span id="cb11-2"><a href="utiliser-rstudio-et-r-markdown.html#cb11-2" tabindex="-1"></a><span class="fu">unique</span>(df_manchot<span class="sc">$</span>Island) <span class="co"># Affiche les valeurs uniques présentent dans la colonne Island </span></span>
+<span id="cb11-3"><a href="utiliser-rstudio-et-r-markdown.html#cb11-3" tabindex="-1"></a><span class="co"># Garder uniquement les manchots de l&#39;île Dream</span></span>
+<span id="cb11-4"><a href="utiliser-rstudio-et-r-markdown.html#cb11-4" tabindex="-1"></a>df_manchot_dream <span class="ot">=</span> <span class="fu">subset</span>(df_manchot, Island <span class="sc">==</span> <span class="st">&quot;Dream&quot;</span>) </span>
+<span id="cb11-5"><a href="utiliser-rstudio-et-r-markdown.html#cb11-5" tabindex="-1"></a><span class="co"># Garder uniquement les petits manchots </span></span>
+<span id="cb11-6"><a href="utiliser-rstudio-et-r-markdown.html#cb11-6" tabindex="-1"></a>df_manchot_petit <span class="ot">=</span> <span class="fu">subset</span>(df_manchot, <span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">3000</span>)</span>
+<span id="cb11-7"><a href="utiliser-rstudio-et-r-markdown.html#cb11-7" tabindex="-1"></a><span class="co"># Utiliser plusieurs conditions pour garder uniquement les petits manchots de l&#39;île Dream </span></span>
+<span id="cb11-8"><a href="utiliser-rstudio-et-r-markdown.html#cb11-8" tabindex="-1"></a>df_dream_petit <span class="ot">=</span> <span class="fu">subset</span>(df_manchot, Island <span class="sc">==</span> <span class="st">&quot;Dream&quot;</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Body Mass (g)</span><span class="st">`</span> <span class="sc">&lt;</span> <span class="dv">3000</span>) </span></code></pre></div>
+</details>
 <p><strong>Visualiser les données avec ggplot2 (générer des figures)</strong></p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="utiliser-rstudio-et-r-markdown.html#cb12-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)  <span class="co"># Installer ggplot2 (si jamais installer)   </span></span>
@@ -453,6 +461,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

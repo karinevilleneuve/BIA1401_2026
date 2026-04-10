@@ -154,6 +154,30 @@ print(df)  # Afficher le tableau
 
 ### Exploration de données
 
+**Combiner des tableaux de données**
+
+Lorsque nous avons plusieurs jeux de données contenant des informations complémentaires, nous pouvons les combiner avec la fonction `merge()`.
+
+```{r, eval = FALSE}
+df_info_gen = data.frame(Name = c("Marie Curie", "Lise Meitner", "Barbara McClintock"), 
+                         Born = c(1867, 1878, 1902),
+                         Nobels = c("Physics - Chemistry", NA, "Physiology or Medicine"))
+
+df_info_educ = data.frame(Name = c("Marie Curie", "Lise Meitner", "Barbara McClintock"), 
+                          Study = c("Physics - Chemistry", "Nuclear physics", "Cytogenetics"), 
+                          Institutions = c("University of Paris", "University of Vienna", "University of Missouri"))
+
+# Fusionner les deux tableaux sur la colonne "Name"
+df_info_all = merge(df_info_gen, df_info_educ, by = "Name", all = TRUE)
+```
+
+Explication :
+
+- `by = "Name"` : Spécifie que la fusion se fait sur la colonne `Name` présente dans les deux jeux de données.  
+- `all = TRUE` : Effectue une jointure externe (`outer join`), conservant toutes les lignes des deux data frames, même si elles ne correspondent pas parfaitement. Si `all = FALSE` (par défaut), seuls les ID présents dans les deux tables sont conservés (`inner join`). `all.x = TRUE` conserverait toutes les lignes de `df_info_gen`, et `all.y = TRUE` celles de `df_info_educ`(jointure gauche/droite).  
+  
+**Utilisation de jeux de données existants**
+
 R comprend plusieurs jeux de données qui sont souvent utilisés comme exemple afin de démontrer les fonctions de R ([liste complète](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html)). Aujourd'hui nous utiliserons le jeu de données `penguins_raw` qui comprend différentes données (longueur des nageoires, masse corporelle, dimensions du bec et sexe) de trois espèces de manchots retrouvés sur les trois Îles de l'archipel Palmer en Antarctique. 
 
 ```{r, eval = FALSE}
@@ -177,28 +201,6 @@ df_manchot_petit = subset(df_manchot, `Body Mass (g)` < 3000)
 df_dream_petit = subset(df_manchot, Island == "Dream" & `Body Mass (g)` < 3000) 
 ```
 
-**Combiner des tableaux de données**
-
-Lorsque nous avons plusieurs jeux de données contenant des informations complémentaires, nous pouvons les combiner avec la fonction `merge()`.
-
-```{r, eval = FALSE}
-df_info_gen = data.frame(Name = c("Marie Curie", "Lise Meitner", "Barbara McClintock"), 
-                         Born = c(1867, 1878, 1902),
-                         Nobels = c("Physics - Chemistry", NA, "Physiology or Medicine"))
-
-df_info_educ = data.frame(Name = c("Marie Curie", "Lise Meitner", "Barbara McClintock"), 
-                          Study = c("Physics - Chemistry", "Nuclear physics", "Cytogenetics"), 
-                          Institutions = c("University of Paris", "University of Vienna", "University of Missouri"))
-
-# Fusionner les deux tableaux sur la colonne "Name"
-df_info_all = merge(df_info_gen, df_info_educ, by = "Name", all = TRUE)
-```
-
-Explication :
-
-- `by = "Name"` : Spécifie que la fusion se fait sur la colonne `Name` présente dans les deux jeux de données.  
-- `all = TRUE` : Effectue une jointure externe (`outer join`), conservant toutes les lignes des deux data frames, même si elles ne correspondent pas parfaitement. Si `all = FALSE` (par défaut), seuls les ID présents dans les deux tables sont conservés (`inner join`). `all.x = TRUE` conserverait toutes les lignes de `df_info_gen`, et `all.y = TRUE` celles de `df_info_educ`(jointure gauche/droite).  
-  
 **Visualiser les données avec ggplot2 (générer des figures)** 
 
 ```{r, eval = FALSE}

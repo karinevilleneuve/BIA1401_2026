@@ -18,3 +18,8 @@ exploration-de-données
 script-pour-blast
 filtrer-les-données
 utiliser-blast
+alignement-de-séquences
+pourquoi-aligner-des-séquences
+objectif-de-lexercice
+créer-une-liste-avec-le-nom-des-bactéries.
+puisque-dans-la-base-de-données-le-genre-et-lepithète

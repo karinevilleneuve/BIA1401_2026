@@ -1,0 +1,48 @@
+# Alignement de séquences
+
+## Pourquoi aligner des séquences 
+
+## Objectif de l'exercice
+
+**Alignement des séquences du gène ARNr 16S de plusieurs bactéries**
+
+Afin de procéder à l’alignement des séquences du gène ARNr 16S de plusieurs bactéries, nous utiliserons R pour extraire, à partir de la base de données [SILVA ribosomal RNA database project](https://www.arb-silva.de/)^[SILVA est une base de données d'ARN ribosomique dont la dernière version (V138.2-2024) contient plus de 9 millions de séquences. La création de la base de données est le résultat d'une collaboratoire entre le Groupe de génomique microbienne de l'Institut Max Planck de microbiologie marine de Brême (Allemagne), le Département de microbiologie de l'Université technique de Munich et Ribocon.], les séquences correspondant aux huit bactéries d’intérêt.
+
+1. Escherichia coli 
+2. Enterobacter cloacae
+3. Staphylococcus epidermidis
+4. Citrobacter youngae
+5. Serratia fonticola
+6. Buttiauxella agrestis
+7. Bacillus subtilis
+8. Acinetobacter calcoaceticus
+
+
+Encore une fois, la première étape consiste à importer le fichier en format FASTA dans R avec la commande suivante :  
+
+```{r, eval = FALSE}
+
+silva = Biostrings::readDNAStringSet("https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/silva_nr99_v138_2_BIA1401.fasta", header = TRUE)
+```
+
+# Créer une liste avec le nom des Bactéries. 
+# Puisque dans la base de données, le genre et l'epithète 
+bacteria = c("Escherichia;coli", "Enterobacter;cloacae", "Staphylococcus;epidermidis", "Citrobacter;youngae","Serratia;fonticola", "Buttiauxella;agrestis", "Bacillus;subtilis", "Acinetobacter;calcoaceticus")
+pattern_regex = paste(bacteria, collapse = "|")
+
+dna_sequences = Biostrings::readDNAStringSet("silva_nr99_v138_2_BIA1401.fasta")
+head(names(dna_sequences))
+
+df = data.frame(name = names(dna_sequences),sequence = as.character(dna_sequences), Sequence_lenght = width(dna_sequences))
+
+nos_sequences = df %>%
+  mutate(match = str_match(name, pattern_regex)) %>%
+  drop_na()
+
+write.fasta(as.list(nos_sequences$sequence), names = nos_sequences$name, nbchar = 80, as.string = TRUE, file.out = "sequence_to_align.fasta")
+```
+
+
+
+
+
