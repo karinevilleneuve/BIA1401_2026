@@ -169,7 +169,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="script-pour-blast.html"><a href="script-pour-blast.html"><i class="fa fa-check"></i><b>4</b> Script pour BLAST</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#filtrer-les-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1</b> Filtrer les données</a></li>
+<li class="chapter" data-level="4.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#script-r"><i class="fa fa-check"></i><b>4.1</b> Script R</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#importer-le-jeu-de-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1.1</b> Importer le jeu de données</a></li>
+<li class="chapter" data-level="4.1.2" data-path="script-pour-blast.html"><a href="script-pour-blast.html#filtrer-les-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1.2</b> Filtrer les données</a></li>
+<li class="chapter" data-level="4.1.3" data-path="script-pour-blast.html"><a href="script-pour-blast.html#exporter-en-format-fasta"><i class="fa fa-check"></i><b>4.1.3</b> Exporter en format FASTA</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="script-pour-blast.html"><a href="script-pour-blast.html#utiliser-blast"><i class="fa fa-check"></i><b>4.2</b> Utiliser BLAST</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html"><i class="fa fa-check"></i><b>5</b> Alignement de séquences</a>
@@ -177,8 +182,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#pourquoi-aligner-des-s%C3%A9quences"><i class="fa fa-check"></i><b>5.1</b> Pourquoi aligner des séquences</a></li>
 <li class="chapter" data-level="5.2" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#objectif-de-lexercice"><i class="fa fa-check"></i><b>5.2</b> Objectif de l’exercice</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="créer-une-liste-avec-le-nom-des-bactéries..html"><a href="créer-une-liste-avec-le-nom-des-bactéries..html"><i class="fa fa-check"></i><b>6</b> Créer une liste avec le nom des Bactéries.</a></li>
-<li class="chapter" data-level="7" data-path="puisque-dans-la-base-de-données-le-genre-et-lepithète.html"><a href="puisque-dans-la-base-de-données-le-genre-et-lepithète.html"><i class="fa fa-check"></i><b>7</b> Puisque dans la base de données, le genre et l’epithète</a></li>
 </ul>
 
       </nav>
@@ -198,32 +201,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="script-pour-blast" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapitre 4</span> Script pour BLAST<a href="script-pour-blast.html#script-pour-blast" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="filtrer-les-données" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Filtrer les données<a href="script-pour-blast.html#filtrer-les-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Maintenant que vous vous êtes familiarisés avec les différentes commandes R et l’interface de RStudio, vous êtes maintenant prêtes et prêts à utiliser R pour obtenir les séquences d’ADN de vos inconnus. Ces dernières ont été compilées dans un seul fichier en format CSV (<code>inconnus_equipe.csv</code>) pour l’ensemble des étudiants de la classe. Vous devez donc utiliser des filtres afin d’extraire uniquement vos données. La première étape consiste à importer le fichier <code>inconnus_equipe.csv</code> dans R avec la commande suivante :</p>
+<p>Maintenant que vous vous êtes familiarisés avec les différentes commandes R et l’interface de RStudio, vous êtes maintenant prêtes et prêts à utiliser R pour obtenir les séquences d’ADN de vos inconnus. Ces dernières ont été compilées dans un seul fichier en format CSV (<code>inconnus_equipe.csv</code>) pour l’ensemble des étudiants de la classe. Vous devez donc utiliser des filtres afin d’extraire uniquement vos données.</p>
+<div id="script-r" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Script R<a href="script-pour-blast.html#script-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="importer-le-jeu-de-données" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Importer le jeu de données<a href="script-pour-blast.html#importer-le-jeu-de-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La première étape consiste à importer le fichier <code>inconnus_equipe.csv</code> dans R avec la commande suivante :</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="script-pour-blast.html#cb14-1" tabindex="-1"></a>df_raw <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/inconnus_equipe.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="script-pour-blast.html#cb1-1" tabindex="-1"></a>df_raw <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/inconnus_equipe.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </details>
+</div>
+<div id="filtrer-les-données" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Filtrer les données<a href="script-pour-blast.html#filtrer-les-donn%C3%A9es" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La prochaine étape consiste à filtrer les colonnes appropriées du tableau de données afin d’extraire vos données. Pour ce faire, n’hésitez pas à consulter les exemples de la section précédente (<a href="utiliser-rstudio-et-r-markdown.html#exploration-de-donn%C3%A9es">Exploration de données</a>), rechercher sur internet, ou demander à vos démos.</p>
 <p>Pour afficher les solutions possibles, cliquer sur ” ▶ Code ” ci-dessous.</p>
 <details class=chunk-details><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb15-1"><a href="script-pour-blast.html#cb15-1" tabindex="-1"></a><span class="co"># Option 1 - Utiliser la fonction native subset de R  </span></span>
-<span id="cb15-2"><a href="script-pour-blast.html#cb15-2" tabindex="-1"></a>df_sub <span class="ot">=</span> <span class="fu">subset</span>(df_raw, Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span>
-<span id="cb15-3"><a href="script-pour-blast.html#cb15-3" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="script-pour-blast.html#cb15-4" tabindex="-1"></a><span class="co"># Option 2 - Utiliser la librairie dplyr </span></span>
-<span id="cb15-5"><a href="script-pour-blast.html#cb15-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-6"><a href="script-pour-blast.html#cb15-6" tabindex="-1"></a>df_sub <span class="ot">=</span> df_raw <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="script-pour-blast.html#cb15-7" tabindex="-1"></a>  <span class="fu">filter</span>(Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb15-8"><a href="script-pour-blast.html#cb15-8" tabindex="-1"></a>           Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb2-1"><a href="script-pour-blast.html#cb2-1" tabindex="-1"></a><span class="co"># Solution 1 - Utiliser la fonction native subset() de R  </span></span>
+<span id="cb2-2"><a href="script-pour-blast.html#cb2-2" tabindex="-1"></a>df_sub <span class="ot">=</span> <span class="fu">subset</span>(df_raw, Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span>
+<span id="cb2-3"><a href="script-pour-blast.html#cb2-3" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="script-pour-blast.html#cb2-4" tabindex="-1"></a><span class="co"># Solution 2 - Utiliser la librairie dplyr avec la fonction filter() </span></span>
+<span id="cb2-5"><a href="script-pour-blast.html#cb2-5" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-6"><a href="script-pour-blast.html#cb2-6" tabindex="-1"></a>df_sub <span class="ot">=</span> df_raw <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="script-pour-blast.html#cb2-7" tabindex="-1"></a>  <span class="fu">filter</span>(Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb2-8"><a href="script-pour-blast.html#cb2-8" tabindex="-1"></a>           Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span></code></pre></div>
 </details>
 <p>Si tout fonctionne, vous devriez maintenant voir un second objet <code>df_sub</code> comportant 3 lignes et 7 colonnes.</p>
-<p>Nous allons maintenant enregistrer sous format fasta le tableau de données filtré afin de pouvoir le téléverser vers l’outil BLAST du NCBI.</p>
+</div>
+<div id="exporter-en-format-fasta" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Exporter en format FASTA<a href="script-pour-blast.html#exporter-en-format-fasta" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Nous allons maintenant enregistrer sous format <strong>FASTA</strong> le tableau de données filtré afin de pouvoir le téléverser vers l’outil BLAST du NCBI.</p>
+<p>En bio-informatique, le format FASTA est un fichier de texte lisible (et non un format binaire) qui contient des séquences d’acides nucléiques (ADN/ARN) ou acides aminées (protéines). Chaque séquence débute par une ligne d’en-tête, introduite par le symbole « &gt; ». Les lignes suivantes contiennent la séquence elle-même, écrite sous forme d’une succession de lettres correspondant aux nucléotides ou aux acides aminés. Par convention, les séquences sont souvent présentées sur des lignes de 80 caractères ou moins, ce qui facilite leur lecture.</p>
+<p>Exemple de fichier FASTA :</p>
+<pre><code>&gt;Escherichia_coli_16S
+AGAGTTTGATCCTGGCTCAG
+GATGAACGCTGGCGGCGTGC
+CTAATACATGCAAGTCGAGC</code></pre>
+<p>Il n’existe pas de fonction native dans R permettant la création ou la manipulation de fichiers FASTA. Il faut donc utiliser la librairie spécialisée <a href="https://www.rdocumentation.org/packages/seqinr/versions/4.2-36">seqinr</a>. Les premières étapes consistent donc à installer cette librairie (<code>install.packages("seqinr")</code>), puis à la charger dans l’environnement de travail (<code>library(seqinr)</code>).</p>
+<p>Description des paramètres de la fonction <code>write.fasta()</code> :</p>
+<ul>
+<li><code>sequences =</code> : indique la colonne du tableau contenant les séquences ;</li>
+<li><code>names =</code> : indique la colonne contenant les identifiants à utiliser pour les en-têtes des séquences ;</li>
+<li><code>nbchar =</code> : indique le nombre de caractères par ligne doit ête accompagné du paramètre ;</li>
+<li><code>as.string =</code> : spécifie que les séquences sont fournies sous forme de chaînes de caractères ;</li>
+<li><code>file.out =</code> : indique le nom qu’on veut donner au fichier à produire.</li>
+</ul>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="script-pour-blast.html#cb16-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;seqinr&quot;</span>)</span>
-<span id="cb16-2"><a href="script-pour-blast.html#cb16-2" tabindex="-1"></a><span class="fu">library</span>(seqinr)</span>
-<span id="cb16-3"><a href="script-pour-blast.html#cb16-3" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="script-pour-blast.html#cb16-4" tabindex="-1"></a><span class="fu">write.fasta</span>(<span class="fu">as.list</span>(df_sub<span class="sc">$</span>Sequence), <span class="at">names =</span> df_sub<span class="sc">$</span>Inconnu_ID, <span class="at">nbchar =</span> <span class="dv">80</span>, <span class="at">as.string =</span> <span class="cn">TRUE</span>, <span class="at">file.out =</span> <span class="st">&quot;output.fasta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="script-pour-blast.html#cb4-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;seqinr&quot;</span>)  </span>
+<span id="cb4-2"><a href="script-pour-blast.html#cb4-2" tabindex="-1"></a><span class="fu">library</span>(seqinr)</span>
+<span id="cb4-3"><a href="script-pour-blast.html#cb4-3" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="script-pour-blast.html#cb4-4" tabindex="-1"></a><span class="fu">write.fasta</span>(<span class="at">sequences =</span> <span class="fu">as.list</span>(df_sub<span class="sc">$</span>Sequence), </span>
+<span id="cb4-5"><a href="script-pour-blast.html#cb4-5" tabindex="-1"></a>            <span class="at">names =</span> df_sub<span class="sc">$</span>Inconnu_ID, </span>
+<span id="cb4-6"><a href="script-pour-blast.html#cb4-6" tabindex="-1"></a>            <span class="at">nbchar =</span> <span class="dv">80</span>, <span class="at">as.string =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb4-7"><a href="script-pour-blast.html#cb4-7" tabindex="-1"></a>            <span class="at">file.out =</span> <span class="st">&quot;output.fasta&quot;</span>)</span></code></pre></div>
 </details>
+</div>
 </div>
 <div id="utiliser-blast" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Utiliser BLAST<a href="script-pour-blast.html#utiliser-blast" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -335,20 +366,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

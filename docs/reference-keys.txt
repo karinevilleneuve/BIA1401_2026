@@ -23,3 +23,12 @@ pourquoi-aligner-des-séquences
 objectif-de-lexercice
 créer-une-liste-avec-le-nom-des-bactéries.
 puisque-dans-la-base-de-données-le-genre-et-lepithète
+script-r
+importer-le-jeu-de-données
+exporter-en-format-fasta
+script-r-1
+importer-le-jeu-de-données-1
+extraire-les-séquences-dintérêt
+aligner-et-visualiser-avec-mafft
+r-markdown
+including-plots

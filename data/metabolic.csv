@@ -1,0 +1,97 @@
+﻿Gene_ID,Metabolism,Module,Acinetobacter calcoaceticus,Buttiauxella agretis,Citrobacter youngae,Escherichia coli,Enterobacter cloacae,Serratia fonticola,Staphyloccocus epidermis,Bacillus subitlis
+K08093,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,1,1
+K13812,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,0,0
+K08094,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,1,1
+K13831,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,0,0
+K00850,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,1,1
+K16370,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,0,0
+K21071,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,0,0
+K01624,Energy metabolism ,"Formaldehyde assimilation, ribulose monophosphate pathway (M00345)",0,0,0,0,0,0,1,1
+K13811,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,0,0,0,0,0,0,0
+K00958,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,0,0,0,0,0,1,1
+K00860,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,1,1
+K00955,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,0,0,0,0,0,0,0
+K00957,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,0,0
+K00956,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,0,0
+K00957,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,0,0
+K00860,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,1,1
+K00390,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,1,1
+K13811,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,0,0,0,0,0,0,0
+K05907,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,0,0,0,0,0,0,0
+K00380,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,1,1
+K00381,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,1,1,1,1,1,1,1
+K00392,Energy metabolism ,"	Assimilatory sulfate reduction (M00176)",0,0,0,0,0,0,0,0
+K00367,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K10534,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K00372,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,1,0,0,1,0,0,1
+K00360,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K00366,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K17877,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K26139,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K26138,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,0,0,0,0,0,0,0
+K00361,Energy metabolism ,Assimilatory nitrate reduction (M00531),0,1,0,0,1,0,0,1
+K18906,Drug Resistance,"Multidrug resistance, efflux pump AbcA (M00700)",0,0,0,0,0,0,1,0
+K18907,Drug Resistance,"Multidrug resistance, efflux pump AbcA (M00700)",0,0,0,0,0,0,0,1
+K18104,Drug Resistance,"Multidrug resistance, efflux pump AbcA (M00700)",0,0,0,0,0,0,1,1
+K18140,Drug Resistance," Multidrug resistance, efflux pump AcrEF-TolC (M00696)",0,1,1,1,1,0,0,0
+K18141,Drug Resistance," Multidrug resistance, efflux pump AcrEF-TolC (M00696)",0,1,1,1,1,0,0,0
+K18142,Drug Resistance," Multidrug resistance, efflux pump AcrEF-TolC (M00696)",0,1,1,1,1,0,0,0
+K12340,Drug Resistance," Multidrug resistance, efflux pump AcrEF-TolC (M00696)",0,1,1,1,1,0,0,0
+K18906,Drug Resistance,"Tetracycline resistance, efflux pump Tet38 (M00704)",0,0,0,0,0,0,1,0
+K08168,Drug Resistance,"Tetracycline resistance, efflux pump Tet38 (M00704)",0,0,0,0,0,0,1,0
+K00134,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K00150,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,1,1
+K00844,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K00845,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,0,0
+K00850,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K00873,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K00886,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K00918,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K00927,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K01623,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,1,0
+K01624,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K01689,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K01803,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K01810,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K01834,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,0
+K06859,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,0,0,1,1,0,0
+K08074,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K11389,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K11645,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,0,0
+K12406,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K12407,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K13810,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K15633,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,1,1
+K15634,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,1,0,0
+K15635,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K15916,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K16305,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K16306,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,0,0
+K16370,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,1,1,1,1,0,0,0
+K25026,Central carbohydrate metabolism, Glycolysis (Embden-Meyerhof pathway) (M00001),0,0,0,0,0,0,1,1
+K01823,Biosynthesis of terpenoids and polyketides,C10-C20 isoprenoid biosynthesis,0,0,1,1,1,1,1,1
+K00795,Biosynthesis of terpenoids and polyketides,C10-C20 isoprenoid biosynthesis,0,0,1,1,1,1,0,0
+K13789,Biosynthesis of terpenoids and polyketides,C10-C20 isoprenoid biosynthesis,0,0,0,0,0,0,1,1
+K13787,Biosynthesis of terpenoids and polyketides,C10-C20 isoprenoid biosynthesis,0,0,0,0,0,0,0,0
+K01647,Central carbohydrate metabolism,"	Glyoxylate cycle",1,1,1,1,1,1,0,1
+K01681,Central carbohydrate metabolism,"	Glyoxylate cycle",1,1,1,1,1,1,0,1
+K01682,Central carbohydrate metabolism,"	Glyoxylate cycle",1,1,1,1,1,1,0,0
+K01637,Central carbohydrate metabolism,"	Glyoxylate cycle",1,1,1,1,1,1,0,0
+K01638,Central carbohydrate metabolism,"	Glyoxylate cycle",1,1,1,1,1,1,0,0
+K19282,Central carbohydrate metabolism,"	Glyoxylate cycle",0,0,0,0,0,0,0,0
+K00026,Central carbohydrate metabolism,"	Glyoxylate cycle",0,0,0,0,0,0,0,0
+K00025,Central carbohydrate metabolism,"	Glyoxylate cycle",0,0,0,0,0,0,0,0
+K00024,Central carbohydrate metabolism,"	Glyoxylate cycle",1,1,1,1,1,1,0,1
+K06041,Lipopolysaccharide metabolism,CMP-KDO biosynthesis,1,1,1,1,1,1,0,0
+K01627,Lipopolysaccharide metabolism,CMP-KDO biosynthesis,1,1,1,1,1,1,0,0
+K03270,Lipopolysaccharide metabolism,CMP-KDO biosynthesis,1,1,1,1,1,1,0,0
+K00979,Lipopolysaccharide metabolism,CMP-KDO biosynthesis,1,1,1,1,1,1,0,0
+K03639,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,1,1,1,0,1,1,1
+K03637,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,1,1,1,0,1,1,1
+K20967,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,0,0,0,0,0,0,0
+K03635,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,1,1,1,0,1,1,1
+K21142,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,0,0,0,0,0,0,0
+K03831,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,0,0,1,0,1,0,0
+K03638,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,1,1,1,0,1,1,1
+K03750,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,1,1,1,0,1,1,1
+K15376,Cofactor and vitamin metabolism,Molybdenum cofactor biosynthesis,0,0,0,0,0,0,0,0

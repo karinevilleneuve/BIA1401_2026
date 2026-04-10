@@ -169,16 +169,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="script-pour-blast.html"><a href="script-pour-blast.html"><i class="fa fa-check"></i><b>4</b> Script pour BLAST</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#filtrer-les-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1</b> Filtrer les données</a></li>
+<li class="chapter" data-level="4.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#script-r"><i class="fa fa-check"></i><b>4.1</b> Script R</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="script-pour-blast.html"><a href="script-pour-blast.html#importer-le-jeu-de-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1.1</b> Importer le jeu de données</a></li>
+<li class="chapter" data-level="4.1.2" data-path="script-pour-blast.html"><a href="script-pour-blast.html#filtrer-les-donn%C3%A9es"><i class="fa fa-check"></i><b>4.1.2</b> Filtrer les données</a></li>
+<li class="chapter" data-level="4.1.3" data-path="script-pour-blast.html"><a href="script-pour-blast.html#exporter-en-format-fasta"><i class="fa fa-check"></i><b>4.1.3</b> Exporter en format FASTA</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="script-pour-blast.html"><a href="script-pour-blast.html#utiliser-blast"><i class="fa fa-check"></i><b>4.2</b> Utiliser BLAST</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html"><i class="fa fa-check"></i><b>5</b> Alignement de séquences</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#pourquoi-aligner-des-s%C3%A9quences"><i class="fa fa-check"></i><b>5.1</b> Pourquoi aligner des séquences</a></li>
 <li class="chapter" data-level="5.2" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#objectif-de-lexercice"><i class="fa fa-check"></i><b>5.2</b> Objectif de l’exercice</a></li>
+<li class="chapter" data-level="5.3" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#script-r-1"><i class="fa fa-check"></i><b>5.3</b> Script R</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#importer-le-jeu-de-donn%C3%A9es-1"><i class="fa fa-check"></i><b>5.3.1</b> Importer le jeu de données</a></li>
+<li class="chapter" data-level="5.3.2" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#extraire-les-s%C3%A9quences-dint%C3%A9r%C3%AAt"><i class="fa fa-check"></i><b>5.3.2</b> Extraire les séquences d’intérêt</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="créer-une-liste-avec-le-nom-des-bactéries..html"><a href="créer-une-liste-avec-le-nom-des-bactéries..html"><i class="fa fa-check"></i><b>6</b> Créer une liste avec le nom des Bactéries.</a></li>
-<li class="chapter" data-level="7" data-path="puisque-dans-la-base-de-données-le-genre-et-lepithète.html"><a href="puisque-dans-la-base-de-données-le-genre-et-lepithète.html"><i class="fa fa-check"></i><b>7</b> Puisque dans la base de données, le genre et l’epithète</a></li>
+<li class="chapter" data-level="5.4" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#aligner-et-visualiser-avec-mafft"><i class="fa fa-check"></i><b>5.4</b> Aligner et visualiser avec MAFFT</a></li>
+<li class="chapter" data-level="5.5" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#r-markdown"><i class="fa fa-check"></i><b>5.5</b> R Markdown</a></li>
+<li class="chapter" data-level="5.6" data-path="alignement-de-séquences.html"><a href="alignement-de-séquences.html#including-plots"><i class="fa fa-check"></i><b>5.6</b> Including Plots</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -215,7 +226,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>La première étape consiste donc à créer un nouveau document de type R Mardown. Pour cela, ouvrez RStudio, puis cliquez sur <code>Fichier</code>. Dans le menu déroulant sélectionner <code>Nouveau Fichier</code> puis <code>R Markdown...</code>.</p>
 <p>Dans la nouvelle fenêtre vous pouvez donner le titre que vous voulez à votre nouveau document.
 Par défaut le nouveau document affiche une petite introduction ainsi que des exemples, tel que sur l’image ci-dessous :</p>
-<p><img src="data/rmarkdown.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="figures/rmarkdown.png" alt="" width="100%" style="display: block; margin: auto;" /></p>
 <p>Ces informations ne sont pas pertinentes et vous pouvez supprimer l’ensemble du texte sous l’entête (l’entête correspond à la section délimitée par les trois tirets <code>---</code>).</p>
 <div id="bloc-de-codes" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Bloc de codes<a href="utiliser-rstudio-et-r-markdown.html#bloc-de-codes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -386,7 +397,7 @@ et se terminer avec les caractères suivant : <code>```</code>. Un bloc de code 
 <span id="cb12-16"><a href="utiliser-rstudio-et-r-markdown.html#cb12-16" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Masse corporelle (g)&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Longueur de la nageoire (mm)&quot;</span>) <span class="sc">+</span>  <span class="co"># Titres</span></span>
 <span id="cb12-17"><a href="utiliser-rstudio-et-r-markdown.html#cb12-17" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()  <span class="co"># Application d&#39;un thème minimaliste</span></span></code></pre></div>
 </details>
-<p><img src="data/tpenguin_plot.svg" alt="" width="100%" style="display: block; margin: auto;" /></p>
+<p><img src="figures/tpenguin_plot.svg" alt="" width="100%" style="display: block; margin: auto;" /></p>
 <p><strong>Exporter des données</strong></p>
 <p>Les tableaux de données ou matrices peuvent être exportés sous différents formats (csv, tsv, tab, etc.) en utilisant des commandes comme <code>write.csv</code> ou <code>write.table</code>. Pour exporter des figures, on peut utiliser la fonction <code>ggsave</code> et spécifier l’extension (PDF, PNG, SVG, etc.).</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
@@ -461,20 +472,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

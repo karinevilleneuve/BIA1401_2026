@@ -1,12 +1,18 @@
 # Script pour BLAST
 
-## Filtrer les données 
+Maintenant que vous vous êtes familiarisés avec les différentes commandes R et l'interface de RStudio, vous êtes maintenant prêtes et prêts à utiliser R pour obtenir les séquences d'ADN de vos inconnus. Ces dernières ont été compilées dans un seul fichier en format CSV (`inconnus_equipe.csv`) pour l'ensemble des étudiants de la classe. Vous devez donc utiliser des filtres afin d'extraire uniquement vos données. 
 
-Maintenant que vous vous êtes familiarisés avec les différentes commandes R et l'interface de RStudio, vous êtes maintenant prêtes et prêts à utiliser R pour obtenir les séquences d'ADN de vos inconnus. Ces dernières ont été compilées dans un seul fichier en format CSV (`inconnus_equipe.csv`) pour l'ensemble des étudiants de la classe. Vous devez donc utiliser des filtres afin d'extraire uniquement vos données. La première étape consiste à importer le fichier `inconnus_equipe.csv` dans R avec la commande suivante :  
+## Script R 
+
+### Importer le jeu de données 
+
+La première étape consiste à importer le fichier `inconnus_equipe.csv` dans R avec la commande suivante :  
 
 ```{r, eval = FALSE}
 df_raw = read.csv("https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/inconnus_equipe.csv", header = TRUE)
 ```
+
+### Filtrer les données 
 
 La prochaine étape consiste à filtrer les colonnes appropriées du tableau de données afin d'extraire vos données.  Pour ce faire, n'hésitez pas à consulter les exemples de la section précédente ([Exploration de données]), rechercher sur internet, ou demander à vos démos. 
 
@@ -14,10 +20,10 @@ Pour afficher les solutions possibles, cliquer sur " ▶ Code " ci-dessous.
 
 
 ```{r, eval = FALSE, class.source="fold-hide"}
-# Option 1 - Utiliser la fonction native subset de R  
+# Solution 1 - Utiliser la fonction native subset() de R  
 df_sub = subset(df_raw, Laboratoire == "Jeudi" & Equipe_ID == "12")
 
-# Option 2 - Utiliser la librairie dplyr 
+# Solution 2 - Utiliser la librairie dplyr avec la fonction filter() 
 library(dplyr)
 df_sub = df_raw %>%
   filter(Laboratoire == "Jeudi" & 
@@ -27,14 +33,40 @@ df_sub = df_raw %>%
 
 Si tout fonctionne, vous devriez maintenant voir un second objet `df_sub` comportant 3 lignes et 7 colonnes.
 
-Nous allons maintenant enregistrer sous format fasta le tableau de données filtré afin de pouvoir le téléverser vers l'outil BLAST du NCBI. 
+### Exporter en format FASTA 
+
+Nous allons maintenant enregistrer sous format **FASTA** le tableau de données filtré afin de pouvoir le téléverser vers l'outil BLAST du NCBI. 
+
+En bio-informatique, le format FASTA est un fichier de texte lisible (et non un format binaire) qui contient des séquences d'acides nucléiques (ADN/ARN) ou acides aminées (protéines). Chaque séquence débute par une ligne d’en-tête, introduite par le symbole « > ». Les lignes suivantes contiennent la séquence elle-même, écrite sous forme d’une succession de lettres correspondant aux nucléotides ou aux acides aminés. Par convention, les séquences sont souvent présentées sur des lignes de 80 caractères ou moins, ce qui facilite leur lecture. 
+
+Exemple de fichier FASTA : 
+
+```
+>Escherichia_coli_16S
+AGAGTTTGATCCTGGCTCAG
+GATGAACGCTGGCGGCGTGC
+CTAATACATGCAAGTCGAGC
+```
+
+Il n’existe pas de fonction native dans R permettant la création ou la manipulation de fichiers FASTA. Il faut donc utiliser la librairie spécialisée [seqinr](https://www.rdocumentation.org/packages/seqinr/versions/4.2-36). Les premières étapes consistent donc à installer cette librairie (`install.packages("seqinr")`), puis à la charger dans l’environnement de travail (`library(seqinr)`).
+
+Description des paramètres de la fonction `write.fasta()` : 
+
+- `sequences = ` : indique la colonne du tableau contenant les séquences ;
+- `names = ` : indique la colonne contenant les identifiants à utiliser pour les en-têtes des séquences ; 
+- `nbchar = ` : indique le nombre de caractères par ligne doit ête accompagné du paramètre ;
+- `as.string =` : spécifie que les séquences sont fournies sous forme de chaînes de caractères ;
+- `file.out = ` : indique le nom qu'on veut donner au fichier à produire.  
+
 
 ```{r, eval = FALSE}
-
-install.packages("seqinr")
+install.packages("seqinr")  
 library(seqinr)
 
-write.fasta(as.list(df_sub$Sequence), names = df_sub$Inconnu_ID, nbchar = 80, as.string = TRUE, file.out = "output.fasta")
+write.fasta(sequences = as.list(df_sub$Sequence), 
+            names = df_sub$Inconnu_ID, 
+            nbchar = 80, as.string = TRUE, 
+            file.out = "output.fasta")
 ```
 
 ## Utiliser BLAST 

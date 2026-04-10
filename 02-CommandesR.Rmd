@@ -20,7 +20,7 @@ Dans la nouvelle fenêtre vous pouvez donner le titre que vous voulez à votre n
 Par défaut le nouveau document affiche une petite introduction ainsi que des exemples, tel que sur l'image ci-dessous : 
 
 ```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
-knitr::include_graphics("data/rmarkdown.png")
+knitr::include_graphics("figures/rmarkdown.png")
 ```
 
 Ces informations ne sont pas pertinentes et vous pouvez supprimer l'ensemble du texte sous l'entête (l'entête correspond à la section délimitée par les trois tirets `---`).
@@ -225,7 +225,7 @@ graph_bmi_flipp = ggplot(data = df_manchot, aes(x = `Flipper Length (mm)`, y = `
 
 
 ```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
-knitr::include_graphics("data/tpenguin_plot.svg")
+knitr::include_graphics("figures/tpenguin_plot.svg")
 ```
 
 

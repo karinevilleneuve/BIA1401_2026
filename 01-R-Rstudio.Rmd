@@ -25,13 +25,13 @@ Le niveau "supérieur" d'utilisation consiste à regrouper une serie prédéterm
 Dans sa forme la plus basique, un IDE consiste en une seule application combinant un éditeur de texte et un terminal afin de faciliter le transfert de commandes de l'un vers l'autre. De nos jours, les IDEs possèdent de nombreux autres outils pour aider au développement de code : un débogueur, un explorateur de fichiers, un résumé des variables... Même si certains IDEs sont spécialisés pour un langage de programmation (comme R Studio avec R et [Spyder](https://www.spyder-ide.org/) avec [Python](https://www.python.org/)), un IDE est une application séparée et indépendante du langage de programmation et il est possible d'utiliser n'importe lequel; il s'agit après tout d'un simple éditeur de texte. Certains IDEs comme le très populaire gratuit et open-source [VSCode](https://code.visualstudio.com/) ont la prétention de pouvoir être utilisés avec n'importe quel langage.
 
 ```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
-knitr::include_graphics("data/programming-evolution.png")
+knitr::include_graphics("figures/programming-evolution.png")
 ```
 
 ## Composants de RStudio
 
 ```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
-knitr::include_graphics("data/rstudio_interface.png")
+knitr::include_graphics("figures/rstudio_interface.png")
 ```
 
 L'interface RStudio inclut : 
