@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapitre 5 Alignement de séquences | BIA1401 2026 - Introduction à R</title>
-  <meta name="description" content="Chapitre 5 Alignement de séquences | BIA1401 2026 - Introduction à R" />
+  <title>Chapitre 7 Identification manuelle de gènes | BIA1401 2026 - Introduction à R</title>
+  <meta name="description" content="Chapitre 7 Identification manuelle de gènes | BIA1401 2026 - Introduction à R" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapitre 5 Alignement de séquences | BIA1401 2026 - Introduction à R" />
+  <meta property="og:title" content="Chapitre 7 Identification manuelle de gènes | BIA1401 2026 - Introduction à R" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapitre 5 Alignement de séquences | BIA1401 2026 - Introduction à R" />
+  <meta name="twitter:title" content="Chapitre 7 Identification manuelle de gènes | BIA1401 2026 - Introduction à R" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="script-pour-blast.html"/>
-<link rel="next" href="voies-métaboliques.html"/>
+<link rel="prev" href="voies-métaboliques.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,119 +230,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="alignement-de-séquences" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapitre 5</span> Alignement de séquences<a href="alignement-de-séquences.html#alignement-de-s%C3%A9quences" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="pourquoi-aligner-des-séquences" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Pourquoi aligner des séquences<a href="alignement-de-séquences.html#pourquoi-aligner-des-s%C3%A9quences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Aligner des séquences permet de comparer directement les nucléotides homologues entre plusieurs organismes. Concrètement, l’alignement place les séquences les unes sous les autres de façon à ce que les positions équivalentes sur le plan évolutif se retrouvent dans la même colonne. Dans le contexte du gène ARNr 16S, l’alignement est particulièrement important pour plusieurs raisons :</p>
+<div id="identification-manuelle-de-gènes" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapitre 7</span> Identification manuelle de gènes<a href="identification-manuelle-de-gènes.html#identification-manuelle-de-g%C3%A8nes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="objectif-de-lexercice-3" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Objectif de l’exercice<a href="identification-manuelle-de-gènes.html#objectif-de-lexercice-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Identifier l’enzyme codée par différents gènes à partir d’un fichier FASTA contenant de courts fragments d’acides nucléiques issus du séquençage.</p>
+</div>
+<div id="méthodologie" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Méthodologie<a href="identification-manuelle-de-gènes.html#m%C3%A9thodologie" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Vous disposez de fichiers en format FASTA contenant les séquences d’acides nucléiques codant pour les dix principales enzymes impliquées dans la voie métabolique de la glycolyse.
+Conformément aux données typiques issues du séquençage à haut débit, la séquence de chaque gène est fragmentée en courts segments. Vous devrez donc suivre les trois étapes ci-dessous :</p>
 <ol style="list-style-type: decimal">
-<li><p>Comparer les similarités et les différences.</p>
-<p>L’alignement permet d’identifier :</p>
-<ul>
-<li>les régions conservées (peu variables entre les les espèces) ;</li>
-<li>les régions variables (propres à certaines espèces ou groupes, elles permettent de les distinguer).</li>
-</ul>
-<p>Ces différences sont utiles pour distinguer les espèces bactériennes et estimer leur degré de parenté</p></li>
-<li><p>Identifier les bactéries</p>
-<p>Le gène ARNr 16S est couramment utilisé comme marqueur taxonomique en microbiologie. En alignant les séquences de bactéries inconnues avec celles de bactéries de référence (par exemple de la base SILVA), on peut déterminer à quelles espèces ou genres elles ressemblent le plus.</p></li>
-<li><p>Étudier les relations évolutives</p>
-<p>L’alignement est nécessaire à la base à la construction d’arbres phylogénétiques. Ces arbres permettent ensuite de visualiser les liens évolutifs entre les bactéries et de voir quelles espèces sont les plus apparentées.</p></li>
-<li><p>Calculer un pourcentage d’identité</p>
-<p>Une fois les séquences alignées, on peut calculer le pourcentage de similitude entre elles. Le pourcentage est ensuite utilisé pour confirmer l’identification d’une bactérie : par convention, deux souches sont considérées comme appartenant à la même espèce si leur similarité au niveau du gène ARNr 16S est supérieure à 97 %.</p></li>
+<li>assembler les courts fragments en une séquence complète en fonction des zones de chevauchement ;</li>
+<li>traduire la séquence d’acides nucléiques assemblée en séquence d’acides aminés ;</li>
+<li>identifier l’enzyme correspondant à cette séquence d’acides aminés à l’aide de l’outil Protein BLAST du NCBI, puis identifier sa position dans la voie métabolique de la glycolyse.</li>
+</ol>
+<div id="assembler-les-court-fragments" class="section level3 hasAnchor" number="7.2.1">
+<h3><span class="header-section-number">7.2.1</span> Assembler les court fragments<a href="identification-manuelle-de-gènes.html#assembler-les-court-fragments" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>L’assemblage consiste à reconstituer une séquence complète à partir de fragments qui se chevauchent partiellement. Vous utiliserez pour cela l’outil en ligne CAP3.</p>
+<ol style="list-style-type: decimal">
+<li>Télécharger à partir de Moodle le fichier zip (genes_fasta.zip) contenant les fichiers fastq.</li>
+<li>Rendez-vous sur le site <a href="https://doua.prabi.fr/software/cap3">CAP3</a></li>
+</ol>
+<p>Pour chacun des fichiers :</p>
+<ol start="3" style="list-style-type: decimal">
+<li>Ouvrez le fichier et copiez l’intégralité de son contenu.</li>
+<li>Collez le contenu dans l’encadré prévu sur le site CAP3.</li>
+<li>Cliquez sur <code>Submit</code> pour lancer l’assemblage.</li>
+<li>Une fois l’analyse terminée, cliquez sur <code>Contigs</code> pour visualiser la séquence assemblée.</li>
+<li>Copiez la séquence du contig obtenu.</li>
+</ol>
+<p>Qu’est-ce qu’un <em>contig</em> ? Un contig (<em>contiguous sequence</em>) est une séquence continue reconstituée à partir de fragments qui se chevauchent. C’est le résultat de l’assemblage.</p>
+</div>
+<div id="traduire-en-acides-aminés" class="section level3 hasAnchor" number="7.2.2">
+<h3><span class="header-section-number">7.2.2</span> Traduire en acides aminés<a href="identification-manuelle-de-gènes.html#traduire-en-acides-amin%C3%A9s" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La séquence assemblée doit être traduite en séquence d’acides aminés avant de pouvoir être identifiée par BLAST.</p>
+<ol style="list-style-type: decimal">
+<li>Rendez-vous sur le site <a href="https://www.bioinformatics.org/sms2/translate.html">Translate (SMS2)</a>.</li>
+<li>Collez la séquence assemblée (contig) dans l’encadrée prévu.</li>
+<li>Cliquez sur <code>Submit</code></li>
+<li>Copier la séquence d’acides aminés</li>
 </ol>
 </div>
-<div id="objectif-de-lexercice-1" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Objectif de l’exercice<a href="alignement-de-séquences.html#objectif-de-lexercice-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><strong>Alignement des séquences du gène ARNr 16S de plusieurs bactéries</strong></p>
-<p>Dans cet exercice, vous allez utiliser R pour extraire depuis la base de données <a href="https://www.arb-silva.de/">SILVA ribosomal RNA database project</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> les séquences du gène ARNr 16S de huit bactéries d’intérêt, puis les aligner à l’aide de l’outil en ligne MAFFT.</p>
-<p>Les huit bactéries étudiées sont :</p>
+<div id="identifier-lenzyme" class="section level3 hasAnchor" number="7.2.3">
+<h3><span class="header-section-number">7.2.3</span> Identifier l’enzyme<a href="identification-manuelle-de-gènes.html#identifier-lenzyme" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>BLAST compare la séquence à des millions de séquences de référence pour trouver les correspondances les plus proches.</p>
 <ol style="list-style-type: decimal">
-<li>Escherichia coli</li>
-<li>Enterobacter cloacae</li>
-<li>Staphylococcus epidermidis</li>
-<li>Citrobacter youngae</li>
-<li>Serratia fonticola</li>
-<li>Buttiauxella agrestis</li>
-<li>Bacillus subtilis</li>
-<li>Acinetobacter calcoaceticus</li>
+<li>Rendez-vous sur le site <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi" class="uri">https://blast.ncbi.nlm.nih.gov/Blast.cgi</a> et sélectionnez <code>Protein BLAST</code>.</li>
+<li>Copiez la séquence d’acides aminés l’encadré prévu.</li>
+<li>Dans le champ Organism, saisissez <em>Escherichia coli</em> pour restreindre la recherche à cet organisme.</li>
+<li>Sélectionnez l’option <code>Quick BLASTP</code></li>
+<li>Cliquez sur <code>BLAST</code> pour lancer la recherche.</li>
 </ol>
 </div>
-<div id="script-r-1" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Script R<a href="alignement-de-séquences.html#script-r-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="importer-le-jeu-de-données-1" class="section level3 hasAnchor" number="5.3.1">
-<h3><span class="header-section-number">5.3.1</span> Importer le jeu de données<a href="alignement-de-séquences.html#importer-le-jeu-de-donn%C3%A9es-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>La première étape consiste à importer le fichier de séquences dans R. Contrairement aux exercices précédents, vous ne travaillez pas avec un tableau de données, mais avec un fichier en format <strong>FASTA</strong>. Pour l’importer, utilisez la fonction <code>read.fasta()</code> de la librairie <code>seqinr</code>.</p>
-<p>Description des paramètres :</p>
-<ul>
-<li><code>file =</code> : indique le fichier FASTA à importer ;</li>
-<li><code>as.string = TRUE</code> : importe chaque séquence comme une chaîne de caractères (<em>character string</em>) plutôt qu’un vecteur de lettres individuelles, ce qui facilite la manipulation ;</li>
-<li><code>forceDNAtolower = FALSE</code> : conserve la case d’origine des nucléotides (majuscules/minuscules) ;</li>
-<li><code>set.attributes = FALSE</code> : empêche l’ajout automatique d’attributs supplémentaires, permettant d’obtenir une structure de données plus simple et plus facile à manipuler.</li>
-</ul>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="alignement-de-séquences.html#cb18-1" tabindex="-1"></a>silva <span class="ot">=</span> seqinr<span class="sc">::</span><span class="fu">read.fasta</span>(<span class="at">file =</span> <span class="st">&quot;https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/data/silva_nr99_v138_2_BIA1401.fasta&quot;</span>, </span>
-<span id="cb18-2"><a href="alignement-de-séquences.html#cb18-2" tabindex="-1"></a>                           <span class="at">as.string =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb18-3"><a href="alignement-de-séquences.html#cb18-3" tabindex="-1"></a>                           <span class="at">forceDNAtolower =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb18-4"><a href="alignement-de-séquences.html#cb18-4" tabindex="-1"></a>                           <span class="at">set.attributes =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-</details>
-<p>Explorer l’object importés :</p>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="alignement-de-séquences.html#cb19-1" tabindex="-1"></a><span class="fu">head</span>(silva) <span class="co"># Affiche les premières séquences</span></span>
-<span id="cb19-2"><a href="alignement-de-séquences.html#cb19-2" tabindex="-1"></a><span class="fu">names</span>(silva) <span class="co"># Affiche les en-têtes de toutes les séquences</span></span>
-<span id="cb19-3"><a href="alignement-de-séquences.html#cb19-3" tabindex="-1"></a>silva[<span class="dv">1401</span>] <span class="co"># Accède à la séquence numéro 1401</span></span>
-<span id="cb19-4"><a href="alignement-de-séquences.html#cb19-4" tabindex="-1"></a>silva[<span class="st">&quot;Bacteria;Actinomycetota;Actinobacteria;Kitasatosporales;Streptomycetaceae;Streptomyces;mangrovicola&quot;</span>] <span class="co"># Accède à une séquence par son nom complet</span></span></code></pre></div>
-</details>
-</div>
-<div id="extraire-les-séquences-dintérêt" class="section level3 hasAnchor" number="5.3.2">
-<h3><span class="header-section-number">5.3.2</span> Extraire les séquences d’intérêt<a href="alignement-de-séquences.html#extraire-les-s%C3%A9quences-dint%C3%A9r%C3%AAt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>L’étape suivante consiste à filtrer l’objet silva pour ne conserver que les huit séquences d’intérêt.</p>
-<p>En examinant la sortie de names(silva), vous remarquerez que chaque séquence est identifiée par son <strong>nom taxonomique complet</strong>, où chaque rang est séparé par un point-virgule (;). L’approche classique qui utilise l’opérateur <code>==</code> (option 1 de la section <a href="script-pour-blast.html#filtrer-les-donn%C3%A9es">Filtrer les données</a>) exige une correspondance <strong>exacte</strong> du texte. L’utilisation de cet opérateur nécessiterait donc de récupérer manuellement l’ensemble du nom complet, ce qui est peu pratique. Pour éviter ce travail manuel, nous utilisons la fonction <code>str_detect()</code> de la librairie <code>stringr</code>, qui permet de détecter la présence d’un motif à l’intérieur d’une chaîne de caractères.</p>
-<p>Description des paramètres :</p>
-<ul>
-<li><code>silva[]</code> : permet de filtrer la liste en conservant uniquement les séquences pour lesquelles la condition est vraie.</li>
-<li><code>str_detect()</code> : fonction pour détecter la présence d’un motif de texte à l’intérieur d’une chaîne de caractères ;</li>
-<li><code>names(silva)</code> : indique qu’on recherche le motif dans le nom de chaque séquence de la liste silva ;</li>
-<li><code>|</code> : agit comme un opérateur logique <code>ou</code> (<em>or</em>) dans la recherche de texte ;</li>
-</ul>
-<p>Résultat attendu :</p>
-<p>L’objet <code>nos_sequences</code> contiendra uniquement les huit séquences des bactéries d’intérêt.</p>
-<p>Une fois de plus la fonction <code>write.fasta()</code> est utilisée pour enregistrer l’objet en format FASTA.</p>
-<details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="alignement-de-séquences.html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb20-2"><a href="alignement-de-séquences.html#cb20-2" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="alignement-de-séquences.html#cb20-3" tabindex="-1"></a>nos_sequences <span class="ot">=</span> silva[</span>
-<span id="cb20-4"><a href="alignement-de-séquences.html#cb20-4" tabindex="-1"></a>  <span class="fu">str_detect</span>(</span>
-<span id="cb20-5"><a href="alignement-de-séquences.html#cb20-5" tabindex="-1"></a>    <span class="fu">names</span>(silva),</span>
-<span id="cb20-6"><a href="alignement-de-séquences.html#cb20-6" tabindex="-1"></a>    <span class="st">&quot;Escherichia;coli|Enterobacter;cloacae|Staphylococcus;epidermidis|Citrobacter;youngae|Serratia;fonticola|Buttiauxella;agrestis|Bacillus;subtilis|Acinetobacter;calcoaceticus&quot;</span>)]</span>
-<span id="cb20-7"><a href="alignement-de-séquences.html#cb20-7" tabindex="-1"></a></span>
-<span id="cb20-8"><a href="alignement-de-séquences.html#cb20-8" tabindex="-1"></a><span class="fu">write.fasta</span>(nos_sequences, <span class="at">names =</span> <span class="fu">names</span>(nos_sequences),<span class="at">nbchar =</span> <span class="dv">80</span>, <span class="at">as.string =</span> <span class="cn">TRUE</span>, <span class="at">file.out =</span> <span class="st">&quot;sequence_to_align.fasta&quot;</span>)</span></code></pre></div>
-</details>
-</div>
-</div>
-<div id="aligner-et-visualiser-avec-mafft" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Aligner et visualiser avec MAFFT<a href="alignement-de-séquences.html#aligner-et-visualiser-avec-mafft" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li><p>Rendez-vous sur le site <a href="https://mafft.cbrc.jp/alignment/server/index.html">MAFFT</a></p></li>
-<li><p>Cliquez sur <code>Choose file</code> et sélectionner le fichier <code>sequence_to_align.fasta</code></p></li>
-<li><p>Cliquez sur <code>Submit</code></p></li>
-<li><p>Cliquez sur <code>View</code> puis <code>View this MSA in new window</code></p></li>
-</ol>
+<div id="résultats" class="section level3 hasAnchor" number="7.2.4">
+<h3><span class="header-section-number">7.2.4</span> Résultats<a href="identification-manuelle-de-gènes.html#r%C3%A9sultats" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sur le schéma de la glycolyse distribué par vos démos, indiquez à quel numéro de fichier correspond chaque enzyme.</p>
 
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="1">
-<li id="fn1"><p>SILVA est une base de données d’ARN ribosomique dont la dernière version (V138.2-2024) contient plus de 9 millions de séquences. La création de la base de données est le résultat d’une collaboratoire entre le Groupe de génomique microbienne de l’Institut Max Planck de microbiologie marine de Brême (Allemagne), le Département de microbiologie de l’Université technique de Munich et Ribocon.<a href="alignement-de-séquences.html#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="script-pour-blast.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="voies-métaboliques.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="voies-métaboliques.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -373,7 +333,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/rstudio/bookdown-demo/edit/master/04_alignement_sequences.Rmd",
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/06_ID_genes.Rmd",
     "text": "Edit"
   },
   "history": {

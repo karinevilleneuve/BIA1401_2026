@@ -1,5 +1,7 @@
 # Script pour BLAST
 
+## Objectif de l'exercice
+
 Maintenant que vous vous êtes familiarisés avec les différentes commandes R et l'interface de RStudio, vous êtes maintenant prêtes et prêts à utiliser R pour obtenir les séquences d'ADN de vos inconnus. Ces dernières ont été compilées dans un seul fichier en format CSV (`inconnus_equipe.csv`) pour l'ensemble des étudiants de la classe. Vous devez donc utiliser des filtres afin d'extraire uniquement vos données. 
 
 ## Script R 
@@ -9,7 +11,7 @@ Maintenant que vous vous êtes familiarisés avec les différentes commandes R e
 La première étape consiste à importer le fichier `inconnus_equipe.csv` dans R avec la commande suivante :  
 
 ```{r, eval = FALSE}
-df_raw = read.csv("https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/inconnus_equipe.csv", header = TRUE)
+df_raw = read.csv("https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/data/inconnus_equipe.csv", header = TRUE)
 ```
 
 ### Filtrer les données 
@@ -18,8 +20,11 @@ La prochaine étape consiste à filtrer les colonnes appropriées du tableau de 
 
 Pour afficher les solutions possibles, cliquer sur " ▶ Code " ci-dessous.
 
-
 ```{r, eval = FALSE, class.source="fold-hide"}
+
+# Exemple pour l'équipe 12 du Jeudi 
+# Remplacer les valeurs entre guillemets par le bon jour et numéro d'équipe
+
 # Solution 1 - Utiliser la fonction native subset() de R  
 df_sub = subset(df_raw, Laboratoire == "Jeudi" & Equipe_ID == "12")
 
@@ -71,19 +76,21 @@ write.fasta(sequences = as.list(df_sub$Sequence),
 
 ## Utiliser BLAST 
 
-1. Rendez-vous sur l'outil en ligne [BLAST du NCBI](https://blast.ncbi.nlm.nih.gov/Blast.cgi)  
-2. Choisir l'analyse `Nucleotide BLAST` (`BLASTn`) 
-3. Sélectionner `Choose file` et sélectionner le fichier produit (`output.fasta`)
-4. Modifier **les paramètres de la recherche BLAST**
+BLAST compare les séquences à des millions de séquences de référence pour trouver les correspondances les plus proches.
 
-    - a. Utiliser la collection de nucléotides (Database rRNA/ITS database)
-    - b. Exclure les organismes environnementaux et non cultivés(Exclude Uncultured/environmental sample sequences)
-    - c. Choisir l'algorithme de BLAST désiré (essayer à la fois les algorithmes` BLASTn` et` MegaBLAST`
+1. Rendez-vous sur l'outil en ligne [BLAST du NCBI](https://blast.ncbi.nlm.nih.gov/Blast.cgi)  
+2. Choisissez l'analyse `Nucleotide BLAST` (`BLASTn`) 
+3. Sélectionnez `Choose file` et sélectionner le fichier produit (`output.fasta`)
+4. Modifiez **les paramètres de la recherche BLAST**
+
+    - a. Base de données : la collection de nucléotides (Database rRNA/ITS database)
+    - b. Exclusion : les organismes environnementaux et non cultivés(Exclude Uncultured/environmental sample sequences)
+    - c. Algorithme: essayez à la fois les algorithmes` BLASTn` et` MegaBLAST`
   
 5. Lancer l'analyse (bouton `BLAST`). 
 
 ```{r echo=FALSE, out.width = "100%", fig.align = "center", out.lenght = "100%"}
-knitr::include_graphics("data/BLAST.png")
+knitr::include_graphics("figures/BLAST.png")
 ```
 
 Exemple de résultat : 
@@ -91,7 +98,7 @@ Exemple de résultat :
 Pour voir les résultats de vos autres inconnus utiliser le menu déroulant sous l'encadré **Results for**
 
 ```{r echo=FALSE, out.width = "70%", fig.align = "center", out.lenght = "100%"}
-knitr::include_graphics("data/BLAST_results.png")
+knitr::include_graphics("figures/BLAST_results.png")
 ```
 
 6. Pour votre rapport, vous devez inclure un imprime-écran incluant les trois premiers résultats de l’analyse (trois premiers taxons identifiés) pour chacun de vos inconnus. Vous devez inclure cette image dans l’annexe de votre travail et pour le corps du texte produire un tableau comprenant les colonnes suivantes : 

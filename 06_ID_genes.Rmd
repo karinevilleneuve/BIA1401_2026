@@ -1,0 +1,56 @@
+# Identification manuelle de gènes 
+
+## Objectif de l'exercice
+
+Identifier l'enzyme codée par différents gènes à partir d'un fichier FASTA contenant de courts fragments d'acides nucléiques issus du séquençage.
+
+## Méthodologie
+
+Vous disposez de fichiers en format FASTA contenant les séquences d'acides nucléiques codant pour les dix principales enzymes impliquées dans la voie métabolique de la glycolyse. 
+Conformément aux données typiques issues du séquençage à haut débit, la séquence de chaque gène est fragmentée en courts segments. Vous devrez donc suivre les trois étapes ci-dessous :
+
+1. assembler les courts fragments en une séquence complète en fonction des zones de chevauchement ; 
+2. traduire la séquence d'acides nucléiques assemblée en séquence d'acides aminés ; 
+3. identifier l'enzyme correspondant à cette séquence d'acides aminés à l'aide de l'outil Protein BLAST du NCBI, puis identifier sa position dans la voie métabolique de la glycolyse.
+
+### Assembler les court fragments 
+
+L'assemblage consiste à reconstituer une séquence complète à partir de fragments qui se chevauchent partiellement. Vous utiliserez pour cela l'outil en ligne CAP3.
+
+1. Télécharger à partir de Moodle le fichier zip (genes_fasta.zip) contenant les fichiers fastq. 
+2. Rendez-vous sur le site [CAP3](https://doua.prabi.fr/software/cap3) 
+
+Pour chacun des fichiers :
+
+3. Ouvrez le fichier et copiez l'intégralité de son contenu.
+4. Collez le contenu dans l'encadré prévu sur le site CAP3. 
+5. Cliquez sur `Submit` pour lancer l'assemblage.
+6. Une fois l'analyse terminée, cliquez sur `Contigs` pour visualiser la séquence assemblée.
+7. Copiez la séquence du contig obtenu.
+
+Qu'est-ce qu'un *contig* ? Un contig (*contiguous sequence*) est une séquence continue reconstituée à partir de fragments qui se chevauchent. C'est le résultat de l'assemblage.
+
+### Traduire en acides aminés 
+
+La séquence assemblée doit être traduite en séquence d'acides aminés avant de pouvoir être identifiée par BLAST.
+
+1. Rendez-vous sur le site [Translate (SMS2)](https://www.bioinformatics.org/sms2/translate.html).
+2. Collez la séquence assemblée (contig) dans l’encadrée prévu. 
+3. Cliquez sur `Submit`
+4. Copier la séquence d'acides aminés
+
+### Identifier l'enzyme
+
+BLAST compare la séquence à des millions de séquences de référence pour trouver les correspondances les plus proches.
+
+1. Rendez-vous sur le site https://blast.ncbi.nlm.nih.gov/Blast.cgi et sélectionnez  `Protein BLAST`. 
+2. Copiez la séquence d'acides aminés l'encadré prévu. 
+3. Dans le champ Organism, saisissez *Escherichia coli* pour restreindre la recherche à cet organisme.
+4. Sélectionnez l’option `Quick BLASTP`
+5. Cliquez sur `BLAST` pour lancer la recherche.
+
+### Résultats
+
+Sur le schéma de la glycolyse distribué par vos démos, indiquez à quel numéro de fichier correspond chaque enzyme.
+
+

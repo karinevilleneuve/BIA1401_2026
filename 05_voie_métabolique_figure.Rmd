@@ -1,0 +1,139 @@
+# Voies métaboliques 
+
+## Pourquoi comparer des voies métaboliques 
+
+La comparaison des voies métaboliques entre différentes bactéries permet de mettre en évidence leurs capacités fonctionnelles et leurs différences physiologiques.
+
+En analysant la présence ou l’absence de gènes impliqués dans certaines voies, il devient possible de :
+
+- comparer le potentiel métabolique des espèces ;
+- identifier des fonctions partagées ou spécifiques ;
+- mieux comprendre leur rôle écologique ou pathologique ;
+- relier certaines voies à leur mode de vie, par exemple la respiration, la fermentation ou la synthèse de métabolites.
+
+Cette approche permet donc de passer d’une simple identification taxonomique à une interprétation fonctionnelle du génome.
+
+## Objectif de l'exercice
+
+L’objectif de cet exercice est de générer une figure de type *heatmap* permettant de visualiser la présence ou l’absence de gènes associés à différentes voies métaboliques chez plusieurs espèces bactériennes. Ce type de représentation facilite la comparaison visuelle entre espèces et entre fonctions biologiques.
+
+## Script R 
+
+### Importer le jeu de données et les libraries 
+
+Pour cet exercise nous aurons besoin des librairies suivantes : 
+
+```{r, eval = FALSE}
+library(dplyr)     # Manipulation du tableau de données
+library(reshape2)  # Restructuration du tableau
+library(ggplot2)   # Génération du graphique
+library(scales)    # Gestion des palettes de couleurs
+```
+
+La première étape consiste à importer le fichier `metabolic.csv` dans R avec la commande suivante :  
+
+Description des paramètres : 
+
+- `header = TRUE` : indique que la première ligne contient les noms de colonnes ;
+- `check.names = FALSE` : conserve les noms de colonnes tels quels, sans modification automatique par R.
+
+```{r, eval = FALSE}
+df_genes = read.csv("https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/data/metabolic.csv", header = TRUE, check.names = FALSE)
+head(df_genes)
+```
+
+Description des colonnes : 
+
+- `Gene_ID` : identifiant unique du gène ou de la fonction génétique, généralement associé à un identifiant standardisé; 
+- `Metabolism` : grande catégorie fonctionnelle à laquelle appartient la voie métabolique, par exemple ; 
+- `Module` : nom détaillé de la voie métabolique ou du module fonctionnel auquel le gène est associé.
+- Colone 4-11 : correspondent aux différentes espèces bactériennes analysées et les valeurs dans ces colonnes indiquent la présence (1) ou l’absence (0) du gène dans le génome séquencé de chaque espèce.
+
+Le tableau de données est présentement organisé en format large (*wide format*), c’est-à-dire que la présence ou l’absence d’un gène pour chaque espèce bactérienne est représentée dans des colonnes distinctes.
+Pour générer une *heatmap* avec ggplot2, les valeurs de présence/absence doivent se retrouver dans une seule colonne. Il est donc nécessaire de restructurer le tableau.
+
+### Restructurer le tableau de données 
+
+La fonction `melt()` de la librairie reshape2 est utilisée pour convertir le tableau du format large vers un format long (*long format*, aussi appelé *tidy*). Pour ce faire, la fonction fusionne plusieurs colonnes en deux colonnes principales, une structure adaptée à la création d’une heatmap.:
+
+- une colonne contenant le nom de la variable ;
+- une colonne contenant les valeurs associées.
+
+```{r, eval=FALSE}
+df_melt = melt(df_genes)
+head(df_melt)
+```
+
+Dans ce nouveau tableau :
+
+la colonne `variable` contient les noms des espèces bactériennes ;
+la colonne `value` contient les valeurs de présence (1) ou d’absence (0) des gènes.
+
+### Manipuler les données
+
+Nous allons ensuite utiliser des fonctions de la librairie dplyr afin de transformer nos valeurs d’absence / présence en proportion de gènes présents par veoie métabolique.
+
+Description des fonctions utilisées : 
+
+- `group_by(variable, Module)` : regroupe les données par espèce bactérienne et par voie métabolique ;
+- `mutate(N_gene = n())` : génère une nouvelle colonne `N_gene`correspondant au nombre total de gène associés à la voie, calculé à partir du nombre de lignes (rangées) dans chaque groupe ;
+- `mutate(N_present = sum(value))` : génère une nouvelle colonne `N_present` correspondant au nombre de gènes présents, obtenu en faisant la somme de valeurs de la colonne `value` ;
+- `mutate(Proportion = N_present / N_gene * 100)` : génère une nouvelle colonne `Proportion` correspondant au pourcentage de gènes présents dans chaque voie ; 
+- `select` : conserve uniquement les colonnes d'intérêts ; 
+- `distinct()` : retire les lignes dupliquées afin de ne conserver qu’une seule entrée par espèce bactérienne et par voie métabolique.
+
+```{r, eval=FALSE}
+df_compl = df_melt %>% 
+  group_by(variable, Module) %>% 
+  mutate(N_gene = n()) %>%
+  mutate(N_present = sum(value)) %>% 
+  mutate(Proportion = N_present / N_gene * 100) %>%
+  select(Metabolism, Module, variable, Proportion) %>%
+  distinct()
+```
+
+### Générer la figure 
+
+La fonction `ggplot()` permet ensuite de représenter graphiquement les proportions obtenues sous forme de heatmap.
+
+```{r, eval=FALSE}
+heatmap_tous = ggplot(df_compl, aes(x = variable, y = Module, fill = Proportion)) +
+  geom_tile(stat = "identity", color = "white") + 
+  scale_fill_distiller(palette = "Oranges", direction = 1,
+                       guide = guide_colourbar(nbin = 100, draw.ulim = FALSE, draw.llim = FALSE)) + 
+  labs(fill = "Proportion de gènes présents (%)") + 
+  facet_grid(rows = vars(Metabolism), scales = "free_y", space = "free_y", labeller = label_wrap_gen(15)) +
+  scale_x_discrete(position = "bottom", expand=c(0,0)) +
+  scale_y_discrete(expand=c(0,0), labels = wrap_format(20)) +
+  theme_classic() +
+  theme(plot.margin = unit(c(top = 0.5, right = 0.5, bottom = 0, left = 0.5), 'lines'),
+        panel.border = element_rect(colour = "black", fill = NA, linewidth = 1),
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 10),
+        axis.text.y = element_text(size = 10),   
+        axis.ticks.x = element_blank(), 
+        axis.ticks.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        plot.title = element_blank(),                                  
+        legend.position ="bottom", 
+        legend.text = element_text(size = 10), 
+        legend.title = element_text(size = 10, hjust=0), 
+        strip.text.y.right = element_text(size = 10, angle = 0),
+        strip.background = element_blank())
+```
+
+Pour enregistrer la figure nous utilisons la fonction `ggsave()` comme suit : 
+
+```{r, eval=FALSE}
+ggsave(filename = "heatmap.png", plot = heatmap_tous, width = 8.5, height = 11, units = "in")
+``` 
+
+### Générer une figure avec vos trois inconnus
+
+Maintenant que vous êtes familières et familiers avec R et comment utiliser les fonctions `subset()` ou `filter()` pour extraire certaines données d’un tableau, vous devez recréer la *heatmap* en incluant uniquement vos trois bactéries inconnues.
+
+Cette figure est à inclure dans votre rapport de laboratoire.
+
+
+
+Bonne chance !

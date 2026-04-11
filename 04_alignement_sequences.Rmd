@@ -2,11 +2,36 @@
 
 ## Pourquoi aligner des séquences 
 
+Aligner des séquences permet de comparer directement les nucléotides homologues entre plusieurs organismes. Concrètement, l'alignement place les séquences les unes sous les autres de façon à ce que les positions équivalentes sur le plan évolutif se retrouvent dans la même colonne. Dans le contexte du gène ARNr 16S, l’alignement est particulièrement important pour plusieurs raisons :
+
+1. Comparer les similarités et les différences. 
+
+    L’alignement permet d’identifier :
+
+    - les régions conservées (peu variables entre les les espèces) ;
+    - les régions variables (propres à certaines espèces ou groupes, elles permettent de les distinguer).
+
+    Ces différences sont utiles pour distinguer les espèces bactériennes et estimer leur degré de parenté
+
+2. Identifier les bactéries
+
+    Le gène ARNr 16S est couramment utilisé comme marqueur taxonomique en microbiologie. En alignant les séquences de bactéries inconnues avec celles de bactéries de référence (par exemple de la base SILVA), on peut déterminer à quelles espèces ou genres elles ressemblent le plus.
+
+3. Étudier les relations évolutives
+
+    L’alignement est nécessaire à la base à la construction d’arbres phylogénétiques. Ces arbres permettent ensuite de visualiser les liens évolutifs entre les bactéries et de voir quelles espèces sont les plus apparentées.
+
+4. Calculer un pourcentage d’identité
+
+    Une fois les séquences alignées, on peut calculer le pourcentage de similitude entre elles. Le pourcentage est ensuite utilisé pour confirmer l'identification d'une bactérie : par convention, deux souches sont considérées comme appartenant à la même espèce si leur similarité au niveau du gène ARNr 16S est supérieure à 97 %.
+
 ## Objectif de l'exercice
 
 **Alignement des séquences du gène ARNr 16S de plusieurs bactéries**
 
-Afin de procéder à l’alignement des séquences du gène ARNr 16S de plusieurs bactéries, nous utiliserons R pour extraire, à partir de la base de données [SILVA ribosomal RNA database project](https://www.arb-silva.de/)^[SILVA est une base de données d'ARN ribosomique dont la dernière version (V138.2-2024) contient plus de 9 millions de séquences. La création de la base de données est le résultat d'une collaboratoire entre le Groupe de génomique microbienne de l'Institut Max Planck de microbiologie marine de Brême (Allemagne), le Département de microbiologie de l'Université technique de Munich et Ribocon.], les séquences correspondant aux huit bactéries d’intérêt.
+Dans cet exercice, vous allez utiliser R pour extraire depuis la base de données [SILVA ribosomal RNA database project](https://www.arb-silva.de/)^[SILVA est une base de données d'ARN ribosomique dont la dernière version (V138.2-2024) contient plus de 9 millions de séquences. La création de la base de données est le résultat d'une collaboratoire entre le Groupe de génomique microbienne de l'Institut Max Planck de microbiologie marine de Brême (Allemagne), le Département de microbiologie de l'Université technique de Munich et Ribocon.] les séquences du gène ARNr 16S de huit bactéries d'intérêt, puis les aligner à l'aide de l'outil en ligne MAFFT. 
+
+Les huit bactéries étudiées sont :
 
 1. Escherichia coli 
 2. Enterobacter cloacae
@@ -21,45 +46,43 @@ Afin de procéder à l’alignement des séquences du gène ARNr 16S de plusieur
 
 ### Importer le jeu de données 
 
-Encore une fois, la première étape consiste à importer le fichier dans R. Cette fois-ci vous ne travaillez pas avec un tableau de données, mais plutôt avec un fichier en format FASTA. Pour importer le fichier il faut donc utiliser la fonction `read.fasta()` de la librairie `seqinr` utilisée précédemment. 
+La première étape consiste à importer le fichier de séquences dans R. Contrairement aux exercices précédents, vous ne travaillez pas avec un tableau de données, mais avec un fichier en format **FASTA**. Pour l'importer, utilisez la fonction `read.fasta()` de la librairie `seqinr`. 
 
 Description des paramètres : 
 
 - `file =` : indique le fichier FASTA à importer ; 
-- `as.string = TRUE` : indique que chaque séquence doit être importée sous forme de chaîne de caractères (character string), plutôt que comme un vecteur de lettres individuelles. Cela facilite souvent la manipulation des séquences par la suite ; 
-- `forceDNAtolower = FALSE` : indique que les nucléotides doivent conserver leur casse d’origine (majuscules/minuscules) ; 
-- `set.attributes = FALSE` : empêche l’ajout automatique d’attributs supplémentaires aux séquences importées permettant d'obtenir une structure de données plus simple et plus facile à manipuler.
+- `as.string = TRUE` : importe chaque séquence comme une chaîne de caractères (*character string*) plutôt qu'un vecteur de lettres individuelles, ce qui facilite la manipulation ; 
+- `forceDNAtolower = FALSE` : conserve la case d’origine des nucléotides (majuscules/minuscules) ; 
+- `set.attributes = FALSE` : empêche l’ajout automatique d’attributs supplémentaires, permettant d'obtenir une structure de données plus simple et plus facile à manipuler.
 
 ```{r, eval = FALSE}
-silva = seqinr::read.fasta(file = "https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/silva_nr99_v138_2_BIA1401.fasta", 
+silva = seqinr::read.fasta(file = "https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/data/silva_nr99_v138_2_BIA1401.fasta", 
                            as.string = TRUE, 
                            forceDNAtolower = FALSE, 
                            set.attributes = FALSE)
-
-
-df_silva = t(data.frame(silva))
 ```
 
-Vous pouvez visualiser l'objet avec la fonction `head()`, visualiser l'entête des séquences avec la fonction `names()`, visualiser une séquence spécifique en spécifiant son numéro de ligne ou nom complet entre crochets `[]`. 
+Explorer l'object importés : 
 
 ```{r, eval = FALSE}
-head(silva)
-names(silva)
-silva[1401]
-silva["Bacteria;Actinomycetota;Actinobacteria;Kitasatosporales;Streptomycetaceae;Streptomyces;mangrovicola"]
+head(silva) # Affiche les premières séquences
+names(silva) # Affiche les en-têtes de toutes les séquences
+silva[1401] # Accède à la séquence numéro 1401
+silva["Bacteria;Actinomycetota;Actinobacteria;Kitasatosporales;Streptomycetaceae;Streptomyces;mangrovicola"] # Accède à une séquence par son nom complet
 ```
+
 ### Extraire les séquences d'intérêt
 
-L’étape suivante consiste à extraire uniquement les séquences correspondant aux bactéries d’intérêt à partir de l’objet silva.
+L'étape suivante consiste à filtrer l'objet silva pour ne conserver que les huit séquences d'intérêt.
 
-En observant la sortie de la fonction names(), on remarque que le nom de chaque séquence contient l’information taxonomique associée à la bactérie et que chaque rang taxonomique y est séparé par un point-virgule (;). Il est donc important de respecter cette même nomenclature lors de la recherche des séquences. Vous remarquerez également que nous ne disposons pas du nom taxonomique complet de chaque bactérie d'intérêt, mais plutôt uniquement le nom de l'espèce. L'approche classique en R avec `==` (option 1 de la section [Filtrer les données]) exige une correspondance exacte du texte. Cela obligerait à récupérer manuellement l’ensemble du nom complet, ce qui est peu pratique. Pour éviter ce travail manuel, nous utilisons la fonction `str_detect()` de la librairie `stringr`, qui permet de détecter la présence d’un motif de texte à l’intérieur d’une chaîne de caractères.
+En examinant la sortie de names(silva), vous remarquerez que chaque séquence est identifiée par son **nom taxonomique complet**, où chaque rang est séparé par un point-virgule (;). L'approche classique qui utilise l'opérateur `==` (option 1 de la section [Filtrer les données]) exige une correspondance **exacte** du texte. L'utilisation de cet opérateur nécessiterait donc de récupérer manuellement l’ensemble du nom complet, ce qui est peu pratique. Pour éviter ce travail manuel, nous utilisons la fonction `str_detect()` de la librairie `stringr`, qui permet de détecter la présence d’un motif à l’intérieur d’une chaîne de caractères.
 
 Description des paramètres : 
 
 - `silva[]` : permet de filtrer la liste en conservant uniquement les séquences pour lesquelles la condition est vraie.
 - `str_detect()` : fonction pour détecter la présence d’un motif de texte à l’intérieur d’une chaîne de caractères ;
 - `names(silva)` : indique qu'on recherche le motif dans le nom de chaque séquence de la liste silva ;
-- `|` : agit comme un opérateur logique OU dans la recherche de texte ; 
+- `|` : agit comme un opérateur logique `ou` (*or*) dans la recherche de texte ; 
 
 Résultat attendu : 
 
