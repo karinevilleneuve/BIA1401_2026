@@ -42,7 +42,7 @@ Si tout fonctionne, vous devriez maintenant voir un second objet `df_sub` compor
 
 Nous allons maintenant enregistrer sous format **FASTA** le tableau de données filtré afin de pouvoir le téléverser vers l'outil BLAST du NCBI. 
 
-En bio-informatique, le format FASTA est un fichier de texte lisible (et non un format binaire) qui contient des séquences d'acides nucléiques (ADN/ARN) ou acides aminées (protéines). Chaque séquence débute par une ligne d’en-tête, introduite par le symbole « > ». Les lignes suivantes contiennent la séquence elle-même, écrite sous forme d’une succession de lettres correspondant aux nucléotides ou aux acides aminés. Par convention, les séquences sont souvent présentées sur des lignes de 80 caractères ou moins, ce qui facilite leur lecture. 
+En bio-informatique, le format FASTA est un fichier de texte lisible (et non un format binaire) qui contient des séquences d'acides nucléiques (ADN/ARN) ou acides aminés (protéines). Chaque séquence débute par une ligne d’en-tête, introduite par le symbole « > ». Les lignes suivantes contiennent la séquence elle-même, écrite sous forme d’une succession de lettres correspondant aux nucléotides ou aux acides aminés. Par convention, les séquences sont souvent présentées sur des lignes de 80 caractères ou moins, ce qui facilite leur lecture. 
 
 Exemple de fichier FASTA : 
 

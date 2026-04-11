@@ -19,7 +19,7 @@ Aligner des séquences permet de comparer directement les nucléotides homologue
 
 3. Étudier les relations évolutives
 
-    L’alignement est nécessaire à la base à la construction d’arbres phylogénétiques. Ces arbres permettent ensuite de visualiser les liens évolutifs entre les bactéries et de voir quelles espèces sont les plus apparentées.
+    L’alignement constitue la base nécessaire à la construction d’arbres phylogénétiques. Ces arbres permettent ensuite de visualiser les liens évolutifs entre les bactéries et de voir quelles espèces sont les plus apparentées.
 
 4. Calculer un pourcentage d’identité
 

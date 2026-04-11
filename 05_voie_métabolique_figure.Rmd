@@ -47,7 +47,7 @@ Description des colonnes :
 - `Gene_ID` : identifiant unique du gène ou de la fonction génétique, généralement associé à un identifiant standardisé; 
 - `Metabolism` : grande catégorie fonctionnelle à laquelle appartient la voie métabolique, par exemple ; 
 - `Module` : nom détaillé de la voie métabolique ou du module fonctionnel auquel le gène est associé.
-- Colone 4-11 : correspondent aux différentes espèces bactériennes analysées et les valeurs dans ces colonnes indiquent la présence (1) ou l’absence (0) du gène dans le génome séquencé de chaque espèce.
+- Colonne 4-11 : correspondent aux différentes espèces bactériennes analysées et les valeurs dans ces colonnes indiquent la présence (1) ou l’absence (0) du gène dans le génome séquencé de chaque espèce.
 
 Le tableau de données est présentement organisé en format large (*wide format*), c’est-à-dire que la présence ou l’absence d’un gène pour chaque espèce bactérienne est représentée dans des colonnes distinctes.
 Pour générer une *heatmap* avec ggplot2, les valeurs de présence/absence doivent se retrouver dans une seule colonne. Il est donc nécessaire de restructurer le tableau.
@@ -71,7 +71,7 @@ la colonne `value` contient les valeurs de présence (1) ou d’absence (0) des 
 
 ### Manipuler les données
 
-Nous allons ensuite utiliser des fonctions de la librairie dplyr afin de transformer nos valeurs d’absence / présence en proportion de gènes présents par veoie métabolique.
+Nous allons ensuite utiliser des fonctions de la librairie dplyr afin de transformer nos valeurs d’absence / présence en proportion de gènes présents par voie métabolique.
 
 Description des fonctions utilisées : 
 
