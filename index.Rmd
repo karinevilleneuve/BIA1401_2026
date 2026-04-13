@@ -13,13 +13,19 @@ github-repo: rstudio/bookdown-demo
 
 ##  Aperçu du cours
 
-Ce guide a été rédigé à l’intention des étudiantes et étudiants du cours BIA104 afin de les familiariser avec l’utilisation du langage de programmation R et de l’IDE RStudio pour la manipulation de tableaux de données.
+Ce guide a été rédigé à l’intention des étudiantes et étudiants du cours BIA1401 afin de les familiariser avec l’utilisation du langage de programmation R et de l’IDE RStudio pour la manipulation de tableaux de données.
 
 1. La première section [Introduction à R et RStudio] présente brièvement R et RStudio. 
 
 2. La seconde section [Utiliser RStudio et R Markdown] introduit quelques notions de base en R et explique comment élaborer des scripts avec RStudio en format R ou R Markdown. 
 
 3. La troisième section [Script pour BLAST] comprend un petit script R que les étudiants doivent utiliser afin d'obtenir, pour chacun de leurs inconnus, la séquence d'acides nucléiques correspondant au gène ARNr 16S. Les étudiants pourront ensuite soumettre ces séquences à l'outil *Basic Local Alignment Search Tool* ([BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)) du National Center for Biotechnology Information (NCBI) afin d'attribuer une classification taxonomique à chacun de leurs inconnus.
+
+4. La quatrième section [Alignement de séquences] contient un court exercice d'alignement de séquence nécessitant l'utilisation de R afin d'extraire des séquences d'intérêt d'une base de données préalablement à l'alignement. 
+
+5. La cinquième section [Voies métaboliques] démontre comment utiliser R pour générer une figure de type *heatmap* permettant de rapidement comparer la composition du génome de diverses bactéries.
+
+6. La sixième section [Identification manuelle de gènes] contient un court exercice permettant de démontrer comment manuellement reconstruire des voies métaboliques à partir de gènes. 
 
 ## Installer R et RStudio 
 
