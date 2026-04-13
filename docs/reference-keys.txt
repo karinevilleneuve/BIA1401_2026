@@ -9,7 +9,9 @@ utiliser-rstudio-et-r-markdown
 pourquoi-utiliser-r-markdown
 utiliser-r-markdown
 bloc-de-codes
-exemples-utiles-de-commandes-r
+utilisation-de-fonctions
+stocker-une-valeur-dans-un-objet
+exemples-utiles
 définir-le-répertoire-de-travail-par-défaut
 importer-des-données
 manipulation-de-variables-et-types-de-données

@@ -51,23 +51,60 @@ Il est également possible d’insérer des blocs de code dans d’autres langag
 
 Plusieurs autres options peuvent être appliqués sur les blocs, pour plus d'informations je vous recommande de consulter la documentation disponible sur internet. 
 
-## Exemples utiles de commandes R
+### Utilisation de fonctions 
+
+Les fonctions constituent une composante primordiale du langage R. Une fonction R se caractérise de la manière suivante: 
+
+- elle a un nom ; 
+- elle a une liste d’arguments, avec certains par défaut ; 
+- elle est formée d'instructions qui la constituent ; 
+- elle retourne un ou plusieurs résultat(s) et/ou effectue une action comme dessiner un graphique, lire un fichier, etc.. 
+
+L’appel à une fonction se fait typiquement comme suit : 
+
+```{r, eval = FALSE}
+nom.fonct(arg.1 = val.1, arg.2 = val.2, etc.)
+``` 
+
+Pour obtenir de l'aide sur un une fonction, connaitre tous les arguments, les valeurs par défaut, et obenir plus d'informations sur le type de résultat qu’elle retourne, ont peut utiliser la fonction `help()` ou le point d'interrogation `?` suivant du nom de la fonction. Exemple : 
+
+```{r, eval = FALSE}
+help(getwd)
+?getwd
+``` 
+
+Vous devriez voir apparaître dans l'onglet `Help` de RStudio une page fournissant toutes les informations relatives à la fonction. 
+
+### Stocker une valeur dans un objet 
+
+*RAPPEL* Un des concepts de base en programmation est la variable/objet. Une variable vous permet de stocker une valeur (par exemple 4) ou un objet (par exemple un tableau de données ou une fonction) à l’aide de l’opérateur d’assignation `<-` ou `=`. Vous pouvez ensuite utiliser le nom de cette variable pour accéder facilement à la valeur ou à l'objet stocké dans cette variable. L'ensemble des objets stockés se retrouve dans l'onglet Environment de RStudio.
+
+Lorsqu'un objet est importé ou créé dans R, celui-ci s'affiche dans la section **Environment** de RStudio (coin supérieur droit). L'objet affiche son nom mais aussi certaines informations. Par exemple, la valeur de l'objet, le nombre de lignes et colonnes d'un tableau, le nombre d'objets dans une liste, etc. Les tableaux et matrices peuvent aussi être visualisés dans un nouvel onglet en cliquant sur l'objet. 
+
+Exemple : 
+
+```{r, eval = FALSE}
+somme = 4 + 5 # Stocker le résultat de l'addition dans l'objet somme 
+tableau1 = data.frame() # Créer un tableau de données vides 
+list1 = c(1, 2, 3, 4) # Créer une list avec les valeurs numériques 1-4 
+```
+
+
+## Exemples utiles 
 
 ### Définir le répertoire de travail par défaut 
 
 Généralement, avant de commencer à analyser des données, il faut indiquer à R où se trouve les données sur notre ordinateur. Il existe plusieurs manières de procéder, dont notamment, spécifier au début du script un répertoire/dossier de travail par défaut. Pour ce faire, une suffit d'utiliser la commande `setwd()` comme présenté sur l'exemple ci-dessous. Le texte entre les guillemets de l'exemple doit simplement être modifié pour le vrai chemin vers votre répertoire/dossier de travail. Une fois le répertoire de travail défini par défaut de la sorte il n'est pas nécessaire d'inclure le chemin vers les fichiers que l'on veut importer tant qu'il se trouve dans le répertoire spécifié. Cela s'applique aussi à la sauvegarde de tableaux, figures ou autres. 
 
-````{verbatim, lang = "python"}
-```{r} 
+```{r, eval = FALSE}
 setwd("/chemin/vers/le/répertoire/")
 ```
-```` 
 
 La fonction `getwd()` affiche quant à elle le répertoire de travail. 
 
 ### Importer des données
 
-Pour importer un fichier en format *comma seperated value* (csv) dans R on utilise la commande `read.csv` avec les arguments suivants : 
+Pour importer un fichier en format *comma seperated value* (csv) dans R on utilise la fonction `read.csv()` avec les arguments suivants : 
 
 - `file` : Spécifier le nom du fichier 
 - `header` : Indiquer si la première ligne de notre tableau correspond au nom des colonnes (valeurs possible TRUE/FALSE)
@@ -75,15 +112,13 @@ Pour importer un fichier en format *comma seperated value* (csv) dans R on utili
 - `sep` : Indiquer quel caractère doit servir de séparateur pour les colonnes 
 - `check.names` : Ne pas systématiquement remplacer le trait d'union par un point (valeurs possible TRUE/FALSE)
 
-````{verbatim, lang = "python"}
- ```{r}
+Dans la commande suivante, le tableau de données est stocké dans l'objet `df`. 
+
+```{r, eval = FALSE}
 df = read.csv(file = "nom_fichier.csv", header = TRUE, row.names = 1, sep = ",", check.names = FALSE)  
 ```
-```` 
 
-Pour un tableau en format *tab delimited* (souvent avec l'extension .tsv) on peut utiliser la fonction `read.table` et spécifier `\t` comme séparateur. 
-
-Lorsqu'un objet est importé ou créé dans R, celui-ci s'affiche dans la section **Environment** de RStudio (coin supérieur droit). L'objet affiche son nom mais aussi certaines informations. Par exemple, la valeur de l'objet, le nombre de lignes et colonnes d'un tableau, le nombre d'objets dans une liste, etc. Les tableaux et matrices peuvent aussi être visualisés dans un nouvel onglet en cliquant sur l'objet. 
+Pour un tableau en format *tab delimited* (souvent avec l'extension .tsv) on peut utiliser la fonction `read.table()` et spécifier `\t` comme séparateur. 
 
 ### Manipulation de variables et types de données
 
@@ -95,7 +130,9 @@ message = "Hello world" # attribuer une valeur non numérique sous forme de cara
 print(val1)  # Afficher la valeur de val1
 class(message)  # Indiquer le type variable 
 
-# Puisque nos variables val1 et val2 sont numériques, nous pouvons les utiliser dans des équations mathématiques
+# Puisque nos variables val1 et val2 sont numériques, nous pouvons les 
+# utiliser dans des équations mathématiques
+
 produit_v1v2 = val1 * val2
 produit_v1v2
 ```
@@ -231,7 +268,7 @@ knitr::include_graphics("figures/tpenguin_plot.svg")
 
 **Exporter des données**
 
-Les tableaux de données ou matrices peuvent être exportés sous différents formats (csv, tsv, tab, etc.) en utilisant des commandes comme `write.csv` ou `write.table`. Pour exporter des figures, on peut utiliser la fonction `ggsave` et spécifier l'extension (PDF, PNG, SVG, etc.). 
+Les tableaux de données ou matrices peuvent être exportés sous différents formats (csv, tsv, tab, etc.) en utilisant des fonctions comme `write.csv` ou `write.table`. Pour exporter des figures, on peut utiliser la fonction `ggsave` et spécifier l'extension (PDF, PNG, SVG, etc.). 
 
 ```{r, eval = FALSE}
 # Exporte un tableau de données 

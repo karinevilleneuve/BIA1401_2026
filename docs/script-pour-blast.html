@@ -156,8 +156,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#utiliser-r-markdown"><i class="fa fa-check"></i><b>3.2</b> Utiliser R Markdown</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#bloc-de-codes"><i class="fa fa-check"></i><b>3.2.1</b> Bloc de codes</a></li>
+<li class="chapter" data-level="3.2.2" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#utilisation-de-fonctions"><i class="fa fa-check"></i><b>3.2.2</b> Utilisation de fonctions</a></li>
+<li class="chapter" data-level="3.2.3" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#stocker-une-valeur-dans-un-objet"><i class="fa fa-check"></i><b>3.2.3</b> Stocker une valeur dans un objet</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#exemples-utiles-de-commandes-r"><i class="fa fa-check"></i><b>3.3</b> Exemples utiles de commandes R</a>
+<li class="chapter" data-level="3.3" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#exemples-utiles"><i class="fa fa-check"></i><b>3.3</b> Exemples utiles</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#définir-le-répertoire-de-travail-par-défaut"><i class="fa fa-check"></i><b>3.3.1</b> Définir le répertoire de travail par défaut</a></li>
 <li class="chapter" data-level="3.3.2" data-path="utiliser-rstudio-et-r-markdown.html"><a href="utiliser-rstudio-et-r-markdown.html#importer-des-données"><i class="fa fa-check"></i><b>3.3.2</b> Importer des données</a></li>
@@ -241,7 +243,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">4.2.1</span> Importer le jeu de données<a href="script-pour-blast.html#importer-le-jeu-de-données" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>La première étape consiste à importer le fichier <code>inconnus_equipe.csv</code> dans R avec la commande suivante :</p>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="script-pour-blast.html#cb14-1" tabindex="-1"></a>df_raw <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/data/inconnus_equipe.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="script-pour-blast.html#cb17-1" tabindex="-1"></a>df_raw <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/karinevilleneuve/BIA1401_2026/refs/heads/main/data/inconnus_equipe.csv&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 </details>
 </div>
 <div id="filtrer-les-données" class="section level3 hasAnchor" number="4.2.2">
@@ -249,17 +251,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>La prochaine étape consiste à filtrer les colonnes appropriées du tableau de données afin d’extraire vos données. Pour ce faire, n’hésitez pas à consulter les exemples de la section précédente (<a href="utiliser-rstudio-et-r-markdown.html#exploration-de-données">Exploration de données</a>), rechercher sur internet, ou demander à vos démos.</p>
 <p>Pour afficher les solutions possibles, cliquer sur ” ▶ Code ” ci-dessous.</p>
 <details class=chunk-details><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb15-1"><a href="script-pour-blast.html#cb15-1" tabindex="-1"></a><span class="co"># Exemple pour l&#39;équipe 12 du Jeudi </span></span>
-<span id="cb15-2"><a href="script-pour-blast.html#cb15-2" tabindex="-1"></a><span class="co"># Remplacer les valeurs entre guillemets par le bon jour et numéro d&#39;équipe</span></span>
-<span id="cb15-3"><a href="script-pour-blast.html#cb15-3" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="script-pour-blast.html#cb15-4" tabindex="-1"></a><span class="co"># Solution 1 - Utiliser la fonction native subset() de R  </span></span>
-<span id="cb15-5"><a href="script-pour-blast.html#cb15-5" tabindex="-1"></a>df_sub <span class="ot">=</span> <span class="fu">subset</span>(df_raw, Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span>
-<span id="cb15-6"><a href="script-pour-blast.html#cb15-6" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="script-pour-blast.html#cb15-7" tabindex="-1"></a><span class="co"># Solution 2 - Utiliser la librairie dplyr avec la fonction filter() </span></span>
-<span id="cb15-8"><a href="script-pour-blast.html#cb15-8" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-9"><a href="script-pour-blast.html#cb15-9" tabindex="-1"></a>df_sub <span class="ot">=</span> df_raw <span class="sc">%&gt;%</span></span>
-<span id="cb15-10"><a href="script-pour-blast.html#cb15-10" tabindex="-1"></a>  <span class="fu">filter</span>(Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> </span>
-<span id="cb15-11"><a href="script-pour-blast.html#cb15-11" tabindex="-1"></a>           Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r fold-hide"><code class="sourceCode r"><span id="cb18-1"><a href="script-pour-blast.html#cb18-1" tabindex="-1"></a><span class="co"># Exemple pour l&#39;équipe 12 du Jeudi </span></span>
+<span id="cb18-2"><a href="script-pour-blast.html#cb18-2" tabindex="-1"></a><span class="co"># Remplacer les valeurs entre guillemets par le bon jour et numéro d&#39;équipe</span></span>
+<span id="cb18-3"><a href="script-pour-blast.html#cb18-3" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="script-pour-blast.html#cb18-4" tabindex="-1"></a><span class="co"># Solution 1 - Utiliser la fonction native subset() de R  </span></span>
+<span id="cb18-5"><a href="script-pour-blast.html#cb18-5" tabindex="-1"></a>df_sub <span class="ot">=</span> <span class="fu">subset</span>(df_raw, Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span>
+<span id="cb18-6"><a href="script-pour-blast.html#cb18-6" tabindex="-1"></a></span>
+<span id="cb18-7"><a href="script-pour-blast.html#cb18-7" tabindex="-1"></a><span class="co"># Solution 2 - Utiliser la librairie dplyr avec la fonction filter() </span></span>
+<span id="cb18-8"><a href="script-pour-blast.html#cb18-8" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb18-9"><a href="script-pour-blast.html#cb18-9" tabindex="-1"></a>df_sub <span class="ot">=</span> df_raw <span class="sc">%&gt;%</span></span>
+<span id="cb18-10"><a href="script-pour-blast.html#cb18-10" tabindex="-1"></a>  <span class="fu">filter</span>(Laboratoire <span class="sc">==</span> <span class="st">&quot;Jeudi&quot;</span> <span class="sc">&amp;</span> </span>
+<span id="cb18-11"><a href="script-pour-blast.html#cb18-11" tabindex="-1"></a>           Equipe_ID <span class="sc">==</span> <span class="st">&quot;12&quot;</span>)</span></code></pre></div>
 </details>
 <p>Si tout fonctionne, vous devriez maintenant voir un second objet <code>df_sub</code> comportant 3 lignes et 7 colonnes.</p>
 </div>
@@ -282,13 +284,13 @@ CTAATACATGCAAGTCGAGC</code></pre>
 <li><code>file.out =</code> : indique le nom qu’on veut donner au fichier à produire.</li>
 </ul>
 <details class=chunk-details open><summary class=chunk-summary><span class=chunk-summary-text>Code</span></summary>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="script-pour-blast.html#cb17-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;seqinr&quot;</span>)  </span>
-<span id="cb17-2"><a href="script-pour-blast.html#cb17-2" tabindex="-1"></a><span class="fu">library</span>(seqinr)</span>
-<span id="cb17-3"><a href="script-pour-blast.html#cb17-3" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="script-pour-blast.html#cb17-4" tabindex="-1"></a><span class="fu">write.fasta</span>(<span class="at">sequences =</span> <span class="fu">as.list</span>(df_sub<span class="sc">$</span>Sequence), </span>
-<span id="cb17-5"><a href="script-pour-blast.html#cb17-5" tabindex="-1"></a>            <span class="at">names =</span> df_sub<span class="sc">$</span>Inconnu_ID, </span>
-<span id="cb17-6"><a href="script-pour-blast.html#cb17-6" tabindex="-1"></a>            <span class="at">nbchar =</span> <span class="dv">80</span>, <span class="at">as.string =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb17-7"><a href="script-pour-blast.html#cb17-7" tabindex="-1"></a>            <span class="at">file.out =</span> <span class="st">&quot;output.fasta&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="script-pour-blast.html#cb20-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;seqinr&quot;</span>)  </span>
+<span id="cb20-2"><a href="script-pour-blast.html#cb20-2" tabindex="-1"></a><span class="fu">library</span>(seqinr)</span>
+<span id="cb20-3"><a href="script-pour-blast.html#cb20-3" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="script-pour-blast.html#cb20-4" tabindex="-1"></a><span class="fu">write.fasta</span>(<span class="at">sequences =</span> <span class="fu">as.list</span>(df_sub<span class="sc">$</span>Sequence), </span>
+<span id="cb20-5"><a href="script-pour-blast.html#cb20-5" tabindex="-1"></a>            <span class="at">names =</span> df_sub<span class="sc">$</span>Inconnu_ID, </span>
+<span id="cb20-6"><a href="script-pour-blast.html#cb20-6" tabindex="-1"></a>            <span class="at">nbchar =</span> <span class="dv">80</span>, <span class="at">as.string =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb20-7"><a href="script-pour-blast.html#cb20-7" tabindex="-1"></a>            <span class="at">file.out =</span> <span class="st">&quot;output.fasta&quot;</span>)</span></code></pre></div>
 </details>
 </div>
 </div>
